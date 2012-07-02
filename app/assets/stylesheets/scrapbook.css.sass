@@ -1,7 +1,7 @@
 @import definitions
 
 $container-width: 960px
-$header-height: 80px
+$header-height: 86px
 $content-height: 720px
 $caption-minheight: 120px
 
@@ -13,6 +13,10 @@ body
   
 div
   background-color: rgba(255,255,255, 0.1)
+  
+a
+  color: $rubine
+  text-decoration: none
 
 #container
   position: relative
@@ -25,9 +29,9 @@ div
     h1
       +heading
       font-size: 3em
-      color: white
+      color: $dark
       a
-        color: white
+        color: $dark
     #navigation
       position: absolute
       right: 0
@@ -54,3 +58,34 @@ div
         width: 230px
         margin-right: 10px
         margin-bottom: 10px
+
+  #account
+    background-color: white
+    border: 1px solid $mid
+    padding: 10px
+    position: relative
+    margin: 5px 0
+    clear: both
+    label
+      +bold
+      color: $dark
+      font-size: 1.1em
+    input[type="text"], input[type="password"], input[type="email"]
+      width: 590px
+      padding: 4px
+      &.login
+        font-size: 2em
+      &.preferences
+        font-size: 2em
+      &.ok
+        border-color: $match
+      &.notok
+        border-color: $link
+    p.confirmation
+      display: none
+    span.reminder
+      float: right
+      a
+        color: $mid
+        &:hover
+          color: $hover
