@@ -1,0 +1,23 @@
+#account
+  %h1.pagetitle
+    =t(:forgotten_password)
+
+  %p
+    = t :forgotten_password_intro
+    
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+  
+    %p
+      = f.label :email
+      %br
+      = f.email_field :email, :class => 'login'
+      %span.note
+        = t :email_note
+        
+    .controls
+      %p
+        = f.submit t :send_reset_instructions
+
+    %p
+      = t(:can_still_log_in, :url => new_user_session_path).html_safe

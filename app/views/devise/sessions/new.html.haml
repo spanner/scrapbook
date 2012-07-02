@@ -1,0 +1,28 @@
+- content_for :pagetitle do
+  =t :sign_in
+
+#account
+  %h1.pagetitle
+    =t :please_sign_in
+
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    %p
+      = f.label :email
+      %br
+      = f.email_field :email, :class => 'login'
+
+    %p
+      = f.label :password
+      %span.reminder
+        = link_to t(:forgot_password), new_password_path(resource_name)
+      %br
+      = f.password_field :password, :class => 'login'
+
+    %p
+      - if devise_mapping.rememberable?
+        = f.check_box :remember_me
+        = f.label :remember_me, :class => "checkbox"
+
+    .controls
+      %p
+        = f.submit t :sign_in

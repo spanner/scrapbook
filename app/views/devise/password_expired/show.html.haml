@@ -1,0 +1,28 @@
+- content_for :pagetitle do
+  Renew your password
+
+#account
+  %h1.pagetitle
+    Renew your password
+
+  = form_for(resource, :as => resource_name, :url => [resource_name, :password_expired], :html => { :method => :put }) do |f|
+    = devise_error_messages!
+
+    %p
+      = f.label :current_password, "Current password"
+      %br
+      = f.password_field :current_password
+
+    %p
+      = f.label :password, "New password"
+      %br
+      = f.password_field :password
+
+    %p
+      = f.label :password_confirmation, "Confirm new password"
+      %br
+      = f.password_field :password_confirmation
+
+    .controls
+      %p
+        = f.submit "Change my password"
