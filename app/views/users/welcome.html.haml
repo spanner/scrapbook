@@ -1,0 +1,30 @@
+- content_for :pagetitle do
+  = t :welcome
+
+#account
+  %h1.pagetitle
+    =t :welcome
+
+  = form_for @user, :html => {:class => 'edit user'} do |f|
+    %p
+      %strong
+        = t :hello
+        = @user.best_name
+      = t :welcome_preamble
+
+    %p
+      = f.label :password
+      %br
+      = f.password_field :password, :autocomplete => "off", :class => 'preferences password required'
+      %br
+      %span.formnote
+        = t :password_requirements
+
+    %p{:class => 'confirmation'}
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation, :class => 'preferences required'
+
+    .controls
+      .save.button
+        = link_to t(:continue), edit_person_url(@user.person), :class => 'submit'

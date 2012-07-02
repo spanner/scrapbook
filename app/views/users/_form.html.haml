@@ -1,0 +1,41 @@
+#account
+  = form_for @user, :html => {:class => 'edit user', :autocomplete => false} do |f|
+    %p
+      = f.label :forename
+      %br
+      = f.text_field :forename, :class => 'preferences'
+
+    %p
+      = f.label :surname
+      %br
+      = f.text_field :surname, :class => 'preferences'
+
+    %p
+      = f.label :email
+      %br
+      = f.text_field :email, :class => 'preferences', :autocomplete => false
+      %br
+      %span.formnote
+        = t :administrative_email_is_private
+
+    %p
+      = f.label :password
+      %br
+      = f.password_field :password, :autocomplete => "off", :class => 'preferences password'
+      %br
+      %span.formnote
+        = t :password_requirements
+
+    %p{:class => 'confirmation'}
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation, :class => 'preferences'
+
+    .controls
+      .cancel.button
+        - if current_user.admin?
+          = link_to t(:cancel), admin_people_url
+        - else
+          = link_to t(:cancel), person_url(current_user.person)
+      .save.button
+        = link_to 'save changes', '#', :class => 'submit'
