@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702110808) do
+ActiveRecord::Schema.define(:version => 20120702122351) do
 
   create_table "reactions", :force => true do |t|
     t.integer  "user_id"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20120702110808) do
     t.string   "name"
     t.string   "youtube_id"
     t.text     "body"
-    t.integer  "scrap_type_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -55,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20120702110808) do
     t.integer  "image_version"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "created_by_id"
+    t.integer  "updated_by_id"
   end
 
   create_table "taggings", :force => true do |t|

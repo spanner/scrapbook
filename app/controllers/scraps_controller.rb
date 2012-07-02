@@ -1,5 +1,6 @@
 class ScrapsController < ApplicationController
-
+  respond_to :html, :js
+  
   before_filter :authenticate_user!
   before_filter :find_scraps, :only => [:index]
   before_filter :get_scrap, :only => [:show, :edit, :update, :destroy]
@@ -29,13 +30,12 @@ protected
   def find_scraps
     sorts = {
       :name => 'ASC',
-      :date => 'DESC',
       :updated_at => 'DESC',
       :created_at => 'DESC',
       :published_at => 'DESC'
     }
     @by = params[:by] || 'date'
-    @by = 'date' unless sorts[@by.to_sym]
+    @by = 'created_at' unless sorts[@by.to_sym]
     @order = params[:order] || sorts[@by.to_sym] || 'ASC'
     
     @scraps = Scrap.order("scraps.#{@by} #{@order}")
@@ -61,15 +61,15 @@ protected
 
     @show = params[:show] || 20
     @page = params[:page] || 1
-    @scraps = @scraps.with_associations.page(@page).per(@show) unless @show == 'all'
+    @scraps = @scraps.page(@page).per(@show) unless @show == 'all'
   end
 
   def get_scrap
-    @scrap = scrap.find(params[:id])
+    @scrap = Scrap.find(params[:id])
   end
 
   def build_scrap
-    @scrap = scrap.new
+    @scrap = Scrap.new
   end
   
   def update_scrap

@@ -1,2 +1,6 @@
-.scrap
-  Scrap!
+.scrap{:class => scrap.type}
+  - if scrap.image?
+    = image_tag(scrap.image.url(:list))
+  %p
+    = strip_tags(scrap.body)
+  = link_to '', scrap_url(scrap), :class => "scrap_link", :id => "scrap_#{scrap.id}"
