@@ -26,6 +26,5 @@ jQuery ($) ->
 
     @
 
-
   $ ->
     $('body').activate()
