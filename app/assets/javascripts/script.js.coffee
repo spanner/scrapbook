@@ -20,15 +20,12 @@ jQuery ($) ->
           caption.text(values[Math.floor(4 * value / 100)])
           
   $.fn.activate = () ->
-      console.log "activate", @
+    console.log "activate", @
+    
+    @find("input.slider").slider()
 
-      @find("input.slider").slider()
+    @
 
-      @
-
-  # *activate()* can be called with any selector. On dom load we call it on the body element to get everything started.
 
   $ ->
     $('body').activate()
-    if Modernizr.history
-      $(window).bind 'popstate', $.restoreState
