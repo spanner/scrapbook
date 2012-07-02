@@ -5,11 +5,11 @@
     = simple_format(@scrap.body)
 
 #caption
+  #reaction
+    = render :partial => 'reactions/react', :@scrap => @scrap
   #metadata
     %h2
       = @scrap.name
     %p
       = t :uploaded_by
       = @scrap.created_by.forename
-  #reaction
-    = render :partial => 'reactions/react', :@scrap => @scrap

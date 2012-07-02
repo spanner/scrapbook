@@ -17,13 +17,17 @@ class User < ActiveRecord::Base
   
   # The new user (who to begin with has a dummy password) cannot log in until activated by token.
   
+  def activate!
+    self.activated = true
+    self.save(:validation => false)
+  end
+  
   def active_for_authentication?
     super && activated?
   end
   
   def after_token_authentication
-    self.activated = true
-    self.save(:validation => false)
+    activate!
   end
   
   def best_name
@@ -31,7 +35,7 @@ class User < ActiveRecord::Base
   end
   
   def reaction_to(scrap)
-    
+    reactions.to_scrap(scrap)
   end
 
   # Current user is pushed into here to make it available in models,
