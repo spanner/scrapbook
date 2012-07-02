@@ -1,4 +1,5 @@
 class ScrapsController < ApplicationController
+  respond_to :html
 
   before_filter :authenticate_user!
   before_filter :find_scraps, :only => [:index]
