@@ -8,6 +8,9 @@ mike = User.create(:email => 'mike@spanner.org', :forename => "Mike", :surname =
 
 text_scrap = Scrap.create(:name => 'test scrap', :body => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
 word_scrap = Scrap.create(:name => 'word scrap', :body => "Merciful disquiet")
-picture_scrap = Scrap.create(:name => 'picture scrap', :body => "Is this allowed a caption?", :image => File.new(Rails.root + 'app/assets/images/hunters.jpg'))
 
-
+upload = Upload.create(:file => File.new(Rails.root + 'app/assets/images/hunters.jpg'))
+picture_scrap = Scrap.create(:name => 'picture scrap', :body => "Is this allowed a caption?")
+picture_scrap.image_upload = upload
+picture_scrap.image_scale_width = 960
+picture_scrap.save
