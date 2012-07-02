@@ -1,8 +1,16 @@
 Scrapbook::Application.routes.draw do
+
+  resources :users, :only => [:edit, :update] do
+    get 'welcome', :action => :welcome, :on => :member
+    get 'invitation', :action => :invitation, :on => :member
+  end
+
   devise_for :users
   
   resources :scraps
   root :to => 'scraps#index'
+  
+  match 'welcome' => 'users#welcome', :as => :welcome
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

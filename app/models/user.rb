@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname
@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
   def after_token_authentication
     self.activated = true
     self.save(:validation => false)
+  end
+  
+  def best_name
+    "#{forename} #{surname}"
   end
 
 protected

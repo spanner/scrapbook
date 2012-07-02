@@ -5,9 +5,9 @@
   =t :preferences
 
 .localnav
-  - if admin?
-    = render :partial => 'people/admin_nav', :locals => {:login => true}
-  - else
-    = render :partial => 'people/nav', :locals => {:login => true}
+  / - if admin?
+  /   = render :partial => 'people/admin_nav', :locals => {:login => true}
+  / - else
+  /   = render :partial => 'people/nav', :locals => {:login => true}
 
 = render :partial => 'form'

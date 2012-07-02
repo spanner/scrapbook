@@ -3,8 +3,8 @@ class UserMailer < ActionMailer::Base
   
   def invitation(user)
     @user = user
-    @url  = "http://scrapbook.dev/login"
-    mail(:to => "#{@user.name} <#{@user.email}>", :subject => "Welcome to My Awesome Site") do |format|
+    @url  = welcome_user_url(@user, :auth_token => @user.authentication_token)
+    mail(:to => "'#{@user.forename} #{@user.surname}' <#{@user.email}>", :subject => "Welcome to My Awesome Site") do |format|
       format.text
       format.html
     end
