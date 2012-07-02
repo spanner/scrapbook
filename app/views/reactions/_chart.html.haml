@@ -1,8 +1,0 @@
-#reactions.minichart
-  %ul
-    - @scrap.reactions.each do |r|
-      - r.scores.each do |rs|
-        %li
-          = rs.scale.name
-          \->
-          = rs.value

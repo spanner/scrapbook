@@ -1,7 +1,8 @@
 - scrap ||= @scrap
 
 - if @reaction
-  = render :partial => 'reactions/chart'
+  #reactions.minichart{:rel => chart_scrap_url(@scrap)}
+  
 - else
   - reaction = current_user.reactions.build(:scrap => @scrap)
   = form_for reaction do |f|

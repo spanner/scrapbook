@@ -7,7 +7,9 @@ Scrapbook::Application.routes.draw do
   end
   match 'welcome' => 'users#welcome', :as => :welcome
 
-  resources :scraps
+  resources :scraps do
+    get :chart, :on => :member, :as => "chart"
+  end
   resources :reactions
   root :to => 'scraps#index'
   

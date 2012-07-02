@@ -1,9 +1,9 @@
 class ScrapsController < ApplicationController
-  respond_to :html, :js
+  respond_to :html, :js, :json
   
   before_filter :authenticate_user!
   before_filter :find_scraps, :only => [:index]
-  before_filter :get_scrap, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_scrap, :only => [:show, :edit, :update, :destroy, :chart]
   before_filter :build_scrap, :only => [:new, :create]
   before_filter :update_scrap, :only => [:create, :update]
 
@@ -24,6 +24,11 @@ class ScrapsController < ApplicationController
 
   def update
     respond_with(@scrap)
+  end
+  
+  def chart
+    @reactions = @scrap.reactions
+    respond_with(@reactions)
   end
 
 protected
