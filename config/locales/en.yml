@@ -24,3 +24,7 @@ en:
   uploaded_by: "Uploaded by"
   welcome: "Welcome"
   welcome_preamble: "Welcome to the scrapbook. Before we go any further, please choose (and confirm) a password for your account."
+  latest: "latest"
+  overview: "overview"
+  add_scrap: "new scrap"
+  log_out: "log out"

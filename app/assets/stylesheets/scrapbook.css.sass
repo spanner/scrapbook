@@ -1,7 +1,7 @@
 @import definitions
 
 $container-width: 960px
-$header-height: 36px
+$header-height: 40px
 $content-height: 720px
 $caption-minheight: 120px
 
@@ -104,11 +104,29 @@ p.formnote
       +heading
       font-size: 2em
       margin: 0
+      a
+        color: $mid
+        &:hover
+          color: $hover
     #navigation
       float: right
       p
         margin: 0
         font-size: 1.4em
+      a
+        display: inline-block
+        padding: 5px 5px 5px 24px
+        color: $mid
+        background:
+          image: image-url('navigation.png')
+          position: 0 0
+          repeat: no-repeat
+        &:hover
+          background-position: 0 0
+        &.grid
+        &.chart
+        &.add
+        &.logout
       
   #content
     #scrap
@@ -118,9 +136,11 @@ p.formnote
       background-color: $verypale
       margin: 0
       p
-        margin: 10px
+        margin: 50px
       &.image
         padding: 0
+        p
+          margin: 10px
       &.word
         font-size: 10em
         line-height: 1.05

@@ -19,7 +19,7 @@ class Scrap < ActiveRecord::Base
       'image'
     elsif body.length < 48
       'word'
-    elsif body.length < 400
+    elsif body.length < 320
       'phrase'
     elsif body.length < 800
       'paragraph'

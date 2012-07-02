@@ -3,8 +3,8 @@
 #scrap{:class => scrap.type}
   - if scrap.image?
     = image_tag scrap.image.url(:cropped)
-
-  = simple_format(scrap.body)
+  - if scrap.body?
+    = simple_format(scrap.body)
 
 #caption
   #metadata
