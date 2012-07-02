@@ -28,3 +28,4 @@ jQuery ($) ->
 
   $ ->
     $('body').activate()
+    $('#reactions.minichart').minichart()

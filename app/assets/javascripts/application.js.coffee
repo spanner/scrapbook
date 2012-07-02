@@ -15,5 +15,6 @@
 #= require lib/extensions
 #= require jquery.nouislider
 #= require modernizr
+#= require chart
 #= require forms
 #= require script
