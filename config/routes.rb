@@ -1,5 +1,8 @@
 Scrapbook::Application.routes.draw do
   devise_for :users
+  
+  resources :scraps
+  root :to => 'scraps#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

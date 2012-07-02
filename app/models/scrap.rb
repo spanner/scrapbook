@@ -1,3 +1,8 @@
 class Scrap < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+  has_owners
+  has_upload :image
+  has_many :taggings
+  has_many :tags, :through => :taggings
+
 end

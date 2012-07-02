@@ -1,3 +1,7 @@
 class Tag < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+  has_owners
+  has_many :taggings
+  has_many :scraps, :through => :taggings
+
 end
