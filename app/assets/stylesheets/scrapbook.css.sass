@@ -1,23 +1,86 @@
 @import definitions
 
 $container-width: 960px
-$header-height: 86px
+$header-height: 76px
 $content-height: 720px
 $caption-minheight: 120px
 
-
-
 body
-  background-color: $bg
-  color: white
-  
-div
-  background-color: rgba(255,255,255, 0.1)
+  background-color: white
+  color: $dark
+  +light
   
 a
   color: $rubine
   text-decoration: none
+  &:hover
+    color: $hover
+  &:active
+    color: $active
 
+h1, h2
+  line-height: 1
+
+h1.pagetitle
+  margin: 0
+  font-size: 4em
+  +heading
+
+input[type="text"], input[type="password"], input[type="email"], select, textarea
+  +light
+  color: $input
+  padding: 5px
+  border: 1px solid $pale
+  font-size: 1.5em
+  &.strong
+    +bold
+  &.destination
+    color: $blue
+  &.empty
+    color: $pale
+  &.minor
+    font-size: 0.9em
+  &.title
+    +bold
+    font-size: 2em
+  &[disabled]
+    color: $pale
+    background-color: #fff
+    border-color: $verypale
+    +bold
+
+input[type="submit"]
+  padding: 5px
+  +light
+  +border-radius
+  font-size: 1.25em
+  border: none
+  background-color: $blue
+  color: white
+  padding: 10px 16px 10px 40px
+  background:
+    image: image-url('arrows.png')
+    position: 8px -116px
+    repeat: no-repeat
+  &:hover
+    background-color: $hover
+  &:active
+    background-color: darken($hover, 10%)
+  &.unavailable
+    background-color: $verypale
+    cursor: default
+
+.note, .formnote
+  font-size: 0.8em
+  color: $mid
+  line-height: 1.3
+
+p.formnote
+  clear: left
+  margin-top: 3px
+
+
+  
 #container
   position: relative
   width: $container-width
@@ -29,9 +92,6 @@ a
     h1
       +heading
       font-size: 3em
-      color: $dark
-      a
-        color: $dark
     #navigation
       position: absolute
       right: 0
@@ -60,9 +120,7 @@ a
         margin-bottom: 10px
 
   #account
-    background-color: white
-    border: 1px solid $mid
-    padding: 10px
+    width: 800px
     position: relative
     margin: 5px 0
     clear: both
@@ -71,7 +129,7 @@ a
       color: $dark
       font-size: 1.1em
     input[type="text"], input[type="password"], input[type="email"]
-      width: 590px
+      width: 790px
       padding: 4px
       &.login
         font-size: 2em
@@ -89,3 +147,40 @@ a
         color: $mid
         &:hover
           color: $hover
+
+  #colophon
+    font-size: 75%
+    color: $mid
+    +heading
+
+#flashes
+  position: absolute
+  top: 20px
+  right: 50px
+  width: 300px
+  p
+    display: none
+    padding: 10px
+    color: white
+    +shadowed
+    +bordered
+    +border-radius
+    &.notice
+      background-color: $green
+      border-color: darken($green, 10%)
+    &.alert
+      background-color: $rubine
+      border-color: darken($rubine, 10%)
+    a.closer
+      display: block
+      float: right
+      width: 16px
+      height: 16px
+      margin-left: 10px
+      margin-right: -5px
+      +text-hidden
+      background: 
+        image: image-url('crosses.png')
+        color: transparent
+        position: 0 -96px
+        repeat: no-repeat
