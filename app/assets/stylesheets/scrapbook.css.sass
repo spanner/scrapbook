@@ -1,0 +1,47 @@
+@import definitions
+
+$container-width: 960px
+$header-height: 80px
+$content-height: 720px
+$caption-minheight: 120px
+
+
+
+body
+  background-color: $bg
+  color: white
+
+#container
+  position: relative
+  width: $container-width
+  margin: 40px auto
+  #header
+    position: relative
+    height: $header-height
+    overflow: hidden
+    h1
+      +heading
+      font-size: 3em
+    #navigation
+      float: right
+  #content
+    #scrap
+      position: relative
+      height: $content-height
+      background-color: $pale
+    #caption
+      background-color: $light
+      min-height: $caption-minheight
+      #title
+        width: 45%
+      #reactions
+        width: 50%
+        float: right
+        margin-left: 5%
+    #scraps
+      .scrap
+        display: block
+        float: left
+        width: 230px
+        margin-right: 10px
+        margin-bottom: 10px
