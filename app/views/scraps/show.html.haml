@@ -1,16 +1,15 @@
-- scrap ||= @scrap
-
-#scrap{:class => scrap.type}
-  - if scrap.image?
-    = image_tag scrap.image.url(:cropped)
-  - if scrap.body?
-    = simple_format(scrap.body)
+#scrap{:class => @scrap.type}
+  - if @scrap.image?
+    = image_tag @scrap.image.url(:cropped)
+  - if @scrap.body?
+    = simple_format(@scrap.body)
 
 #caption
   #metadata
     %h2
-      = scrap.name
+      = @scrap.name
     %p
       = t :uploaded_by
-      = scrap.created_by.forename
+      = @scrap.created_by.forename
   #reaction
+    = render :partial => 'reactions/react', :@scrap => @scrap

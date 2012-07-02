@@ -115,18 +115,27 @@ p.formnote
         font-size: 1.4em
       a
         display: inline-block
-        padding: 5px 5px 5px 24px
+        margin: 3px 6px 0 0
+        padding: 2px 5px 5px 32px
         color: $mid
         background:
           image: image-url('navigation.png')
           position: 0 0
           repeat: no-repeat
         &:hover
-          background-position: 0 0
+          background-position: 0 -32px
+          color: $hover
         &.grid
         &.chart
+          background-position: 0 -64px
+          &:hover
+            background-position: 0 -96px
         &.add
+          background-position: 0 -128px
+          &:hover
+            background-position: 0 -160px
         &.logout
+          background-position: 0 -192px
       
   #content
     #scrap

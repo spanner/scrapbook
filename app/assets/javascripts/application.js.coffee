@@ -13,7 +13,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require lib/extensions
+#= require jquery.nouislider
 #= require modernizr
-#= require script
 #= require forms
-
+#= require script
