@@ -259,7 +259,3 @@ $ ->
   $('input.password').password_field()
   $('.error_message').validation_error()
   $('.toggle').toggle()
-  $('#mapconfig').map_configurator()
-  $('#menuholder').menu()
-  $('input.time').timepicker()
-  $('.areapicker').area_picker()
