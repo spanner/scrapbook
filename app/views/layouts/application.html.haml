@@ -1,0 +1,38 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %title
+      = t(:scrapbook)
+      - if content_for?(:pagetitle)
+        \:
+        = content_for(:pagetitle)
+
+    = stylesheet_link_tag "http://fast.fonts.com/cssapi/39788b9e-bfde-4f08-a9c5-5b2c08e0c676.css"
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = content_for :head
+    
+    /[if IE]
+      = stylesheet_link_tag "ie.css"
+    = csrf_meta_tags
+
+%body
+  #container
+    #header
+      = link_to t(:scrapbook), "/"
+
+    #content
+      = yield
+
+  #colophon
+    = t(:footer_info)
+
+  #flashes
+    %p.notice= notice
+    %p.alert= alert
+
+  :javascript
+    var _gaq=[['_setAccount','UA-15051397-11'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
