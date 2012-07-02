@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702105316) do
+ActiveRecord::Schema.define(:version => 20120702110808) do
+
+  create_table "reactions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "scrap_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "scales", :force => true do |t|
+    t.string   "name"
+    t.integer  "max"
+    t.integer  "min"
+    t.string   "max_label"
+    t.string   "min_label"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "scores", :force => true do |t|
+    t.integer  "reaction_id"
+    t.integer  "scale_id"
+    t.float    "value"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "scraps", :force => true do |t|
     t.string   "name"

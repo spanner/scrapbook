@@ -59,9 +59,6 @@ protected
     @scraps = @scraps.tagged_with_all_of(@tags) if @tags.any?
     @fragments.each { |frag| @scraps = @scraps.matching(frag) }
 
-    # used in facet display
-    @criteria = (@tags + @institutions).sort_by(&:name)
-
     @show = params[:show] || 20
     @page = params[:page] || 1
     @scraps = @scraps.with_associations.page(@page).per(@show) unless @show == 'all'

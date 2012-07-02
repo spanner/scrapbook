@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    respond_with(@user)
+    respond_with @user
   end
 
   def update
-    respond_with(@user)
+    respond_with @user, :location => root_url
   end
 
 protected
