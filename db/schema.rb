@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630162159) do
+ActiveRecord::Schema.define(:version => 20120702090641) do
 
   create_table "scraps", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(:version => 20120630162159) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "original_extension"
+    t.integer  "original_width"
+    t.integer  "original_height"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "users", :force => true do |t|
