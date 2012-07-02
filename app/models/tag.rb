@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
 
-  has_owners
+  belongs_to_owners
   has_many :taggings
   has_many :scraps, :through => :taggings
 

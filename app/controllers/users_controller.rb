@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_with @user, :location => root
+    respond_with @user, :location => root_url
   end
 
 protected
