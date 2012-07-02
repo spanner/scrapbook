@@ -5,4 +5,6 @@
 - else
   - reaction = current_user.reactions.build(:scrap => @scrap)
   = form_for reaction do |f|
+    / here you need to loop over the Scale objects showing a slider for each
+    / (within a nested form for a new score object)
     = f.range_field :score, :class => "slider"
