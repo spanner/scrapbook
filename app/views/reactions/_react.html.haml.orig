@@ -1,8 +1,0 @@
-- scrap ||= @scrap
-
-<<<<<<< HEAD
-=======
-= form_for scrap do |f|
-  = f.fields_for :reactions do |rf|
-    = rf.range_field :reaction, :class => "slider"
->>>>>>> bacb1d9b9aed81506ac5203633025107e92bdb21

@@ -14,6 +14,7 @@ class ScrapsController < ApplicationController
   end
 
   def show
+    @reaction = current_user.reaction_to(@scrap)
     respond_with(@scrap)
   end
 

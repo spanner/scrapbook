@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-
+  has_many :reactions
+  has_many :scores, :through => :reactions
+  
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname
   
@@ -25,6 +27,10 @@ class User < ActiveRecord::Base
   
   def best_name
     "#{forename} #{surname}"
+  end
+  
+  def reaction_to(scrap)
+    
   end
 
   # Current user is pushed into here to make it available in models,
