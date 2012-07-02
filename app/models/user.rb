@@ -1,13 +1,42 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname
   # attr_accessible :title, :body
   
   
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  after_create :send_invitation
+  
+  validates :password, :presence => true, :length => {:minimum => 6}, :confirmation => true, :if => :password_required?
+
+  def password_required?
+    activated? && (!password.blank?)
+  end
+  
+  # The new user (who to begin with has a dummy password) cannot log in until activated by token.
+  
+  def active_for_authentication?
+    super && activated?
+  end
+  
+  def after_token_authentication
+    self.activated = true
+    self.save(:validation => false)
+  end
+
+protected
+
+  def send_invitation
+    self.ensure_authentication_token
+    invitation = UserMailer.invitation(self)
+    User.transaction do
+      invited_at = Time.now
+      invitation.deliver
+      self.save
+    end
+  end
+
 end
