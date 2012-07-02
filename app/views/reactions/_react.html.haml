@@ -3,7 +3,6 @@
 - if @reaction
 
 - else
-  = form_for scrap do |f|
-    - reaction = current_user.reactions.build(:scrap => @scrap)
-    = f.fields_for :reactions, reaction do |rf|
-      = rf.range_field :reaction, :class => "slider"
+  - reaction = current_user.reactions.build(:scrap => @scrap)
+  = form_for reaction do |f|
+    = f.range_field :score, :class => "slider"

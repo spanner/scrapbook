@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702122351) do
+ActiveRecord::Schema.define(:version => 20120702131659) do
 
   create_table "reactions", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "created_by_id"
     t.integer  "scrap_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "scales", :force => true do |t|
