@@ -14,11 +14,11 @@ en:
   devise:
     failure:
       already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unauthenticated: 'This application is private. Please sign in to continue.'
       unconfirmed: 'You have to confirm your account before continuing.'
       locked: 'Your account is locked.'
       invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
+      invalid_token: 'Sorry: your authentication token was not recognised. Please check that your email program has not garbled a link or wrapped the address across two lines.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account exists but it has not been activated. Please check your invitation email and follow the instructions there.'
     sessions:

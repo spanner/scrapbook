@@ -5,11 +5,11 @@ Scrapbook::Application.routes.draw do
     get 'welcome', :action => :welcome, :on => :member
     get 'invitation', :action => :invitation, :on => :member
   end
-  
+  match 'welcome' => 'users#welcome', :as => :welcome
+
   resources :scraps
   root :to => 'scraps#index'
   
-  match 'welcome' => 'users#welcome', :as => :welcome
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

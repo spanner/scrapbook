@@ -3,10 +3,6 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname
-  # attr_accessible :title, :body
-  
-  
-  attr_accessible :email, :password, :password_confirmation, :remember_me
   
   after_create :send_invitation
   
@@ -31,6 +27,16 @@ class User < ActiveRecord::Base
     "#{forename} #{surname}"
   end
 
+  # Current user is pushed into here to make it available in models,
+  # most pertinently the UserActionObserver that sets ownership before save.
+  #
+  def self.current
+    Thread.current[:user]
+  end
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
 protected
 
   def send_invitation
@@ -40,6 +46,15 @@ protected
       invited_at = Time.now
       invitation.deliver
       self.save
+    end
+  end
+
+  # once the user succeeds in setting a password, the authentication token can be deleted
+  # to make login possible only with their email and password.
+  
+  def clear_authentication_token_if_password_set
+    if self.authentication_token && !self.encrypted_password.blank?
+      authentication_token = nil
     end
   end
 

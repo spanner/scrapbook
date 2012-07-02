@@ -9,7 +9,7 @@
     %p
       %strong
         = t :hello
-        = @user.best_name
+        = @user.best_name + '.'
       = t :welcome_preamble
 
     %p
@@ -25,6 +25,6 @@
       %br
       = f.password_field :password_confirmation, :class => 'preferences required'
 
-    .controls
-      .save.button
-        = link_to t(:continue), edit_user_url(@user), :class => 'submit'
+      .controls
+        %p
+          = f.submit t :set_password

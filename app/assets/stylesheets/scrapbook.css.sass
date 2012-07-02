@@ -1,7 +1,7 @@
 @import definitions
 
 $container-width: 960px
-$header-height: 76px
+$header-height: 30px
 $content-height: 720px
 $caption-minheight: 120px
 
@@ -18,11 +18,18 @@ a
   &:active
     color: $active
 
+strong, b
+  +bold
+
+em, i
+  +italic
+
 h1, h2
   line-height: 1
 
 h1.pagetitle
   margin: 0
+  margin-top: -8px
   font-size: 4em
   +heading
 
@@ -91,7 +98,8 @@ p.formnote
     overflow: hidden
     h1
       +heading
-      font-size: 3em
+      font-size: 2em
+      margin: 0
     #navigation
       position: absolute
       right: 0

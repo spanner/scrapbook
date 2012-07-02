@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  hello: "Hello"
   activerecord:
     attributes:
       honour:
@@ -21,3 +21,4 @@ en:
   send_reset_instructions: "Send reset instructions"
   set_password: "Set password"
   sign_in: "Sign in"
+  welcome_preamble: "Welcome to the scrapbook. Before we go any further, please choose (and confirm) a password for your account."
