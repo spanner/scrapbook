@@ -19,13 +19,21 @@
 %body
   #container
     #header
-      = link_to t(:scrapbook), "/"
-
+      %h1
+        = link_to t(:scrapbook), "/"
+      - if user_signed_in?
+        #navigation
+          %p
+            = link_to t(:latest), '/', :class => 'grid'
+            = link_to t(:overview), '/overview', :class => 'chart'
+            = link_to t(:add_scrap), new_scrap_url, :class => 'add'
+            = link_to t(:log_out), destroy_user_session_path, :class => 'logout', :method => :delete
+    
     #content
       = yield
 
-  #colophon
-    = t(:footer_info)
+    #colophon
+      = t(:footer_info)
 
   #flashes
     %p.notice= notice

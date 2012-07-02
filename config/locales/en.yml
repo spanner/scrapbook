@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      honour:
+        honour_type_id: "Type"
+        title: "Title (if special)"
+        year: "Year"
+  scrapbook: "Scrapbook"
+  footer_info: "Built by spanner in half a day."

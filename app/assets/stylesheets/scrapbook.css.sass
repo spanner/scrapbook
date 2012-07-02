@@ -10,6 +10,9 @@ $caption-minheight: 120px
 body
   background-color: $bg
   color: white
+  
+div
+  background-color: rgba(255,255,255, 0.1)
 
 #container
   position: relative
@@ -22,8 +25,14 @@ body
     h1
       +heading
       font-size: 3em
+      color: white
+      a
+        color: white
     #navigation
-      float: right
+      position: absolute
+      right: 0
+      bottom: 0
+      
   #content
     #scrap
       position: relative
