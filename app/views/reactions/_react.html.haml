@@ -1,5 +1,5 @@
 - scrap ||= @scrap
 
 = form_for scrap do |f|
-
-  = f.range_field 
+  = f.fields_for :reactions do |rf|
+    = rf.range_field :reaction, :class => "slider"
