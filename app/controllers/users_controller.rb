@@ -6,15 +6,15 @@ class UsersController < ApplicationController
   before_filter :confine_to_self
   
   def show
-    respond_with(@user)
+    respond_with @user
   end
 
   def edit
-    respond_with(@user)
+    respond_with @user
   end
 
   def update
-    respond_with(@user)
+    respond_with @user, :location => root
   end
 
 protected

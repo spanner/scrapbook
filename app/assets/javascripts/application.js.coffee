@@ -14,5 +14,6 @@
 #= require jquery_ujs
 #= require lib/extensions
 #= require modernizr
+#= require script
 #= require forms
 
