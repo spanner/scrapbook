@@ -66,11 +66,11 @@ protected
   end
 
   def get_scrap
-    @scrap = scrap.find(params[:id])
+    @scrap = Scrap.find(params[:id])
   end
 
   def build_scrap
-    @scrap = scrap.new
+    @scrap = Scrap.new
   end
   
   def update_scrap
