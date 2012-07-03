@@ -1,0 +1,42 @@
+= form_for @scrap do |f|
+  #body
+    .panel.image
+      .dropbox{:rel => uploads_path(:format => :js)}
+        .img
+          - if @scrap.image_upload
+            = link_to image_tag(@scrap.image.url(:cropped)), edit_upload_url(@scrap.image_upload), :class => 'recrop'
+          - else 
+            .nonie
+              = link_to image_tag(@scrap.image.url(:cropped)), new_upload_url(:person_id => @scrap.id), :class => 'picker'
+            .ie
+              = image_tag(@scrap.image.url(:cropped))
+        - unless @scrap.image?
+          %p.instructions.nonie
+            = t(:image_note)
+            %span.droppable
+              = t :image_note_drop
+          %p.instructions.ie
+            %br
+            = t :image_note_ie
+            
+        %p.file
+          = file_field_tag :image_uploader, :class => 'file', :id => 'file_upload', :accept => "image"
+    
+    .panel.text
+      = f.text_area :body, :rel => Scrap.human_attribute_name("body"), :class => 'labelled body'
+    .panel.video
+    .panel.audio
+    .panel.document
+  #caption
+    #tabs
+      = link_to t(:image), '#', :class => 'tab', :'data-reveal' => '.image'
+      = link_to t(:text), '#', :class => 'tab', :'data-reveal' => '.text'
+      = link_to t(:video), '#', :class => 'unavailable', :'data-reveal' => '.video'
+      = link_to t(:audio), '#', :class => 'unavailable', :'data-reveal' => '.audio'
+      = link_to t(:document), '#', :class => 'unavailable', :'data-reveal' => '.document'
+  
+    #metadata
+      %h2
+        = f.text_field :name, :rel => Scrap.human_attribute_name("name"), :class => 'labelled name'
+      %p
+        = f.text_area :description, :rel => Scrap.human_attribute_name("description"), :class => 'labelled description'

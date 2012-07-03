@@ -33,6 +33,11 @@ h1.pagetitle
   +heading
   +caps
 
+.nonie
+  display: block
+.ie
+  display: none
+
 input[type="text"], input[type="password"], input[type="email"], select, textarea
   +light
   color: $input
@@ -143,43 +148,44 @@ p.formnote
             
   #content
     #scrap
-      position: relative
-      overflow: hidden
-      min-height: $content-height
-      background-color: $verypale
-      margin: 0
-      div
-        margin: 40px 80px 50px 50px
-        p
-          margin: 0
-          margin-bottom: 0.25em
-      &.image
-        padding: 0
-        p
-          margin: 10px
-      &.word, &.phrase
-        line-height: 1.05
-    #caption
-      position: relative
-      background-color: white
-      min-height: $caption-minheight
-      margin: 0
-      padding: 10px
-      #metadata
-        width: 45%
-        h2
-          margin: 0 0 0.5em 0
-      #reactions
-        width: 50%
-        float: right
-        margin-left: 5%
+      #body
         position: relative
-        canvas
-          position: absolute
-          left: 0
-          top: 0
-          height: 120px
-          width: 120px
+        overflow: hidden
+        min-height: $content-height
+        background-color: $verypale
+        margin: 0
+        div.text
+          margin: 40px 80px 50px 50px
+          p
+            margin: 0
+            margin-bottom: 0.25em
+        &.image
+          padding: 0
+          p
+            margin: 10px
+        &.word, &.phrase
+          line-height: 1.05
+      #caption
+        position: relative
+        background-color: white
+        min-height: $caption-minheight
+        margin: 0
+        padding: 10px
+        #metadata
+          width: 45%
+          h2
+            margin: 0 0 0.5em 0
+        #reactions
+          width: 50%
+          float: right
+          margin-left: 5%
+          position: relative
+          canvas
+            position: absolute
+            left: 0
+            top: 0
+            height: 120px
+            width: 120px
           
     #scraps
       margin-top: 10px
@@ -289,3 +295,114 @@ p.formnote
         color: transparent
         position: 0 -96px
         repeat: no-repeat
+
+
+#scrap.editing
+  .panel
+    display: none
+    &.image
+      display: block
+
+  p.instructions
+    position: absolute
+    top: 500px
+    left: 410px
+    width: 150px
+    color: $dark
+    text-align: center
+    &.error
+      top: 152px
+      
+  .dropbox
+    position: absolute
+    overflow: hidden
+    top: 0
+    left: 0
+    width: 960px
+    height: 720px
+    &.hover
+      background-color: #ecafba
+      img
+        +opacity(0.5)
+    .progress_holder
+      position: absolute
+      overflow: hidden
+      top: 170px
+      left: 166px
+      width: 500px
+      height: 3em
+      border: 1px solid $mid
+      background-color: white
+      z-index: 900
+      +border-radius
+      .progress
+        position: relative
+        width: 0%
+        height: 100%
+        background-color: $active
+        background: transparent image-url('progress_stripes.png') repeat-x top left scroll
+      .commentary 
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        font-size: 1em
+        line-height: 1
+        padding: 1em
+        text-align: center
+    .waiter
+      position: absolute
+      overflow: hidden
+      top: 170px
+      left: 320px
+      width: 200px
+      height: 32px
+      line-height: 32px
+      padding-left: 40px
+      color: $dark
+      background: transparent image-url('upload_spinner.gif') no-repeat top left scroll
+      display: none
+    .preview
+      position: absolute
+      top: 0
+      left: 0
+      width: 960px
+      height: 720px
+      cursor: move
+      +opacity(0.9)
+      img
+        width: 100%
+        height: 100%
+    .scaler
+      position: absolute
+      top: 200px
+      left: 160px
+      width: 480px
+      height: 100px
+      color: white
+      +text-shadow(1px, 2px, 3px, #333)
+      p.range
+        position: relative
+        width: 490px
+        margin: 0 auto
+        overflow: hidden
+        img
+          float: left
+          margin-left: 5px
+          +opacity(1)
+        .slider
+          display: block
+          position: relative
+          float: left
+          width: 402px
+          height: 50px
+          background: transparent image-url('scale.png') no-repeat 0 20px
+          .marker
+            display: block
+            position: absolute
+            top: 9px
+            left: 50px
+            width: 16px
+            height: 32px
+            background: transparent image-url('slider.png') no-repeat top left
+            cursor: move
