@@ -12,9 +12,9 @@
               = image_tag(@scrap.image.url(:cropped))
         - unless @scrap.image?
           %p.instructions.nonie
-            = t(:image_note)
             %span.droppable
               = t :image_note_drop
+            = t(:image_note)
           %p.instructions.ie
             %br
             = t :image_note_ie
@@ -28,15 +28,19 @@
     .panel.audio
     .panel.document
   #caption
-    #tabs
-      = link_to t(:image), '#', :class => 'tab', :'data-reveal' => '.image'
-      = link_to t(:text), '#', :class => 'tab', :'data-reveal' => '.text'
-      = link_to t(:video), '#', :class => 'unavailable', :'data-reveal' => '.video'
-      = link_to t(:audio), '#', :class => 'unavailable', :'data-reveal' => '.audio'
+    .tabs
       = link_to t(:document), '#', :class => 'unavailable', :'data-reveal' => '.document'
+      = link_to t(:audio), '#', :class => 'unavailable', :'data-reveal' => '.audio'
+      = link_to t(:video), '#', :class => 'unavailable', :'data-reveal' => '.video'
+      = link_to t(:text), '#', :class => 'tab', :'data-reveal' => '.text'
+      = link_to t(:image), '#', :class => 'tab here', :'data-reveal' => '.image'
   
     #metadata
       %h2
         = f.text_field :name, :rel => Scrap.human_attribute_name("name"), :class => 'labelled name'
       %p
         = f.text_area :description, :rel => Scrap.human_attribute_name("description"), :class => 'labelled description'
+
+    .controls
+      %p
+        = f.submit t :save_scrap

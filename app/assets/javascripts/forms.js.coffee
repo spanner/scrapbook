@@ -250,12 +250,60 @@ jQuery ($) ->
 
 
 
+  tabs = []
+  class Tab
+    constructor: (element) ->
+      @element = $(element)
+      @selector = @element.attr('data-reveal')
+      @showing = @element.hasClass('here')
+      @element.click @show
+      tabs.push @
+    show: (e) =>
+      e.preventDefault() if e
+      Tab.hide()
+      $(@selector).fadeIn()
+      @element.blur().addClass('here')
+    hide: (e) =>
+      e.preventDefault() if e
+      $(@selector).hide()
+      @element.removeClass('here')
+    @hide: ->
+      $.each tabs, ->
+        @hide()
 
+  $.fn.tab = ->
+    @each ->
+      new Tab(@)
+      
+
+  $.size_to_fit = (e) ->
+    container = $(@)
+    l = container.val().length
+    size = (((600.0/(l+200.0)) + 0.25) * 2).toFixed(2)
+    container.animate
+      'font-size': "#{size}em"
+      width: 830
+      height: 595
+    , 
+      queue: false
+      duration: 100
+        
+  $.fn.self_sizes = () ->
+    @bind "keyup", $.size_to_fit
+    @bind "change", $.size_to_fit
+    $.size_to_fit.apply(@)
+
+
+      
 
 
 
 $ -> 
   $('#flashes p:parent').flash()
+  $('input.labelled, textarea.labelled').self_label()
   $('input.password').password_field()
   $('.error_message').validation_error()
   $('.toggle').toggle()
+  $('.tab').tab()
+  $('textarea.body').self_sizes()
+  $('.dropbox').uploader()

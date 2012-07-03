@@ -5,7 +5,7 @@ class Scrap < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
   has_upload :image, 
-             :geometry => "960x720#", 
+             :geometry => "960x720#",
              :styles => {
                :icon => "48x48#",
                :thumb => "100x100#",

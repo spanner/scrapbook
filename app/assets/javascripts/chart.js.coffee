@@ -4,16 +4,16 @@
 #= require_self
 
 jQuery ($) ->
-  c = document.getElementById("axis")
-  context=c.getContext("2d")
-  c.height = 120
-  c.width = 120
-  context.lineWidth = 2;
-  context.moveTo(0,60.5)
-  context.lineTo(120,60.5)
-  context.moveTo(60.5,0)
-  context.lineTo(60.5,120)
-  context.stroke()
+  if c = document.getElementById("axis")
+    context=c.getContext("2d")
+    c.height = 120
+    c.width = 120
+    context.lineWidth = 2;
+    context.moveTo(0,60.5)
+    context.lineTo(120,60.5)
+    context.moveTo(60.5,0)
+    context.lineTo(60.5,120)
+    context.stroke()
 
   $.fn.minichart = () ->
     @each () ->
