@@ -20,10 +20,7 @@ jQuery ($) ->
           caption.text(values[Math.floor(4 * value / 100)])
           
   $.fn.activate = () ->
-    console.log "activate", @
-    
     @find("input.slider").slider()
-
     @
 
   $ ->

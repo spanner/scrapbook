@@ -101,3 +101,11 @@ $default-box-shadow-blur: 3px
 =button($color: $dark)
   background-color: $color
   +border-radius(3px)
+
+=hover
+  &:hover
+    color: $hover
+    text-shadow: 0 0 5px white
+  &:active
+    color: $active
+  

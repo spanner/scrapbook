@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     activate!
   end
   
-  def best_name
+  def name
     "#{forename} #{surname}"
   end
   
