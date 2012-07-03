@@ -22,7 +22,7 @@ jQuery ($) ->
         xs = []
         ys = []
         sizes = []
-        name = []
+        names = []
         for point in points
           if point.usness
             xs.push point.usness
@@ -32,13 +32,24 @@ jQuery ($) ->
         xs.push 10
         ys.push 10
         sizes.push 0
+        names.push null
         xs.push -10
         ys.push -10
         sizes.push 0
-        console.log xs, ys, sizes
+        names.push null
         canvas = Raphael('reactions')
-        canvas.dotchart(0, 0, 800, 800, xs, ys, sizes, {max: 10, heat: true})
-  
+        res = canvas.dotchart(0, 0, 800, 800, xs, ys, sizes, {max: 10, heat: true}).hover () ->
+          console.log this
+          this.marker = this.marker || canvas.tag(this.x, this.y, "#{@id}: #{@data('caption')}", 0, this.r + 2).insertBefore(this)
+          this.marker.show()
+        ,() ->
+          this.marker && this.marker.hide()
+
+        i = names.length - 1
+        res.each () ->
+          @data('caption', names[i]) if name?
+          i--
+          
   $.fn.minichart = () ->
     c = document.getElementById("axis")
     context=c.getContext("2d")

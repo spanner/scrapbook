@@ -309,5 +309,5 @@ $ ->
   $('.error_message').validation_error()
   $('.toggle').toggle()
   $('.tab').tab()
-  $('textarea.body').self_sizes()
+  # $('textarea.body').self_sizes()
   $('.dropbox').uploader()
