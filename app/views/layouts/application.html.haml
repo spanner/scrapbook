@@ -25,7 +25,7 @@
         #nav.navigation
           %p
             = link_to t(:latest), '/', :class => 'grid'
-            = link_to t(:overview), '/overview', :class => 'chart'
+            = link_to t(:overview), reactions_url, :class => 'chart'
             = link_to t(:add_scrap), new_scrap_url, :class => 'add'
     
     #content
