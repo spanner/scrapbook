@@ -61,27 +61,28 @@ input[type="text"], input[type="password"], input[type="email"], select, textare
     border-color: $verypale
     +bold
 
-input[type="submit"]
-  padding: 5px
-  +light
-  +border-radius
-  font-size: 1.25em
-  border: none
-  background-color: $blue
-  color: white
-  padding: 10px 16px 10px 40px
-  background:
-    image: image-url('arrows.png')
-    position: 8px -116px
-    repeat: no-repeat
-  &:hover
-    background-color: $hover
-  &:active
-    background-color: darken($hover, 10%)
-  &.unavailable
-    background-color: $light
-    cursor: default
-
+.controls
+  input[type="submit"]
+    padding: 5px
+    +light
+    +border-radius
+    font-size: 1.25em
+    border: none
+    background-color: $blue
+    color: white
+    padding: 10px 16px 10px 40px
+    background:
+      image: image-url('arrows.png')
+      position: 8px -116px
+      repeat: no-repeat
+    &:hover
+      background-color: $hover
+    &:active
+      background-color: darken($hover, 10%)
+    &.unavailable
+      background-color: $light
+      cursor: default
+  
 .note, .formnote
   font-size: 0.8em
   color: $mid
@@ -180,11 +181,37 @@ p.formnote
             margin: 0 0 0.25em 0
           p
             margin: 0 0 0.25em 0
-        #reactions
+        #reaction
           width: 50%
           float: right
           margin-left: 5%
           position: relative
+          #new_reaction
+            p.slider
+              clear: left
+              height: 28px
+              overflow: hidden
+              margin: 10px 0
+            label
+              display: block
+              float: left
+              width: 50px
+              margin: 0 10px
+              line-height: 28px
+              &.min
+                text-align: right
+            .sliderbar
+              float: left
+              margin-top: 10px
+            .controls
+              input[type="submit"]
+                font-size: 0.8em
+                background-image: none
+                padding: 6px
+                margin: 0 180px
+            &.waiting
+              +opacity(0.25)
+
           svg
             z-index: 1
           canvas
@@ -192,9 +219,9 @@ p.formnote
             left: 0
             top: 0
       #discussion
+        display: none
         position: relative
         overflow: hidden
-        display: block
         margin-top: 20px
           
     #scraps
@@ -537,3 +564,6 @@ p.formnote
       min-width: 16px
       text-align: center
       color: $dark
+
+
+

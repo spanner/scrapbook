@@ -3,10 +3,18 @@
 - if @reaction
   #reactions.minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
     %canvas#axis
+
 - else
   - reaction = current_user.reactions.build(:scrap => @scrap)
   = form_for reaction do |f|
     - Scale.all.each do |scale|
       - score = reaction.scores.build(:scale => scale)
       = f.fields_for :scores, score do |sf|
-        = sf.range_field :value, :class => "slider", :"data-values" => ""
+        %p.slider
+          = sf.label :value, scale.min_label
+          = sf.range_field :value, :class => "slider", :"data-values" => ""
+          = sf.label :value, scale.max_label
+    .controls.small
+      %p
+        = f.submit t :show_reactions
+    

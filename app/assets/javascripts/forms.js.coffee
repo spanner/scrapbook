@@ -293,13 +293,11 @@ jQuery ($) ->
       duration: 100
         
   $.fn.self_sizes = () ->
-    @bind "keyup", $.size_to_fit
-    @bind "change", $.size_to_fit
-    $.size_to_fit.apply(@)
-
-
-      
-
+    @each ->
+      console.log "self_sizes", @
+      $(@).bind "keyup", $.size_to_fit
+      $(@).bind "change", $.size_to_fit
+      $.size_to_fit.apply(@)
 
 
 $ -> 
@@ -309,5 +307,5 @@ $ ->
   $('.error_message').validation_error()
   $('.toggle').toggle()
   $('.tab').tab()
-  # $('textarea.body').self_sizes()
+  $('textarea.body').self_sizes()
   $('.dropbox').uploader()
