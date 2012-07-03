@@ -4,6 +4,16 @@
 #= require_self
 
 jQuery ($) ->
+  c = document.getElementById("axis")
+  context=c.getContext("2d")
+  c.height = 120
+  c.width = 120
+  context.lineWidth = 2;
+  context.moveTo(0,60.5)
+  context.lineTo(120,60.5)
+  context.moveTo(60.5,0)
+  context.lineTo(60.5,120)
+  context.stroke()
 
   $.fn.minichart = () ->
     @each () ->
@@ -25,10 +35,3 @@ jQuery ($) ->
         sizes.push 0
         canvas = Raphael('reactions')
         canvas.dotchart(0, 0, 120, 120, xs, ys, sizes, {max: 5, heat: true})
-        c = document.getElementById("axis");
-        ctx=c.getContext("2d");
-        ctx.moveTo(0,60);
-        ctx.lineTo(120,60);
-        ctx.moveTo(60,0);
-        ctx.lineTo(60,120);
-        ctx.stroke();
