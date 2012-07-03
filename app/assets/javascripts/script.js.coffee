@@ -2,11 +2,9 @@ jQuery ($) ->
   $.fn.slider = () ->
     @each () ->
       input = $(@)
-      console.log "slider", input
       values = input.attr('data-values').split(/,\s*/)
       slider = $('<div class="sliderbar" />')
       caption = $('<span class="response" />').text(values[2])
-      console.log values
       $(@).hide().after(slider)
       slider.after(caption)
       slider.noUiSlider "init",
@@ -18,16 +16,27 @@ jQuery ($) ->
           value = slider.noUiSlider("getValue")[0]
           input.val(value)
           caption.text(values[Math.floor(4 * value / 100)])
-          
-  $.fn.activate = () ->
-    @find("input.slider").slider()
-    @  
+
+
+  $.fn.reactor = ->
+    @submit (e) ->
+      form = $(@)
+      e.preventDefault()
+      form.addClass "waiting"
+      form.find("input").attr("disabled", true)
+      form.post form.attr("action"), form.serialize(), (response) ->
+        replacement = $(response)
+        form.removeClass "waiting"
+        form.hide()
+        form.after(replacement)
+      , "html"
 
 
 $ ->
-  $('body').activate()
+  $("input.slider").slider()
   $('.minichart').minichart()
   $('.bigchart').chart()
+  $('#new_reaction').reactor()
   $('#scrap_search .search').keyup () ->
     $(@).parent().parent().submit()
   
