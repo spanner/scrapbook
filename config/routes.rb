@@ -8,8 +8,10 @@ Scrapbook::Application.routes.draw do
   match 'welcome' => 'users#welcome', :as => :welcome
 
   resources :scraps do
+    resources :uploads
     get :chart, :on => :member, :as => "chart"
   end
+  
   resources :reactions
   root :to => 'scraps#index'
   

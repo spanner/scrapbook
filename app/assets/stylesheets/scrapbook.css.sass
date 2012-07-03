@@ -79,7 +79,7 @@ input[type="submit"]
   &:active
     background-color: darken($hover, 10%)
   &.unavailable
-    background-color: $verypale
+    background-color: $light
     cursor: default
 
 .note, .formnote
@@ -301,7 +301,7 @@ p.formnote
         repeat: no-repeat
 
 
-#scrap.editing
+#container #content #scrap.editing
   #caption
     .tabs
       position: absolute
@@ -337,15 +337,21 @@ p.formnote
         height: 100px
     
   #body
+    overflow: visible
+    position: none
+    height: 720px
+  
     .panel
       display: none
+      margin: 0
       &.image
         display: block
 
     .text
       textarea
-        width: 100%
-        height: 100%
+        margin: 40px 80px 50px 50px
+        width: 830px
+        height: 595px
         border: none
         background-color: transparent
         color: $input
@@ -363,6 +369,16 @@ p.formnote
         &.error
           top: 152px
       
+      .overflow
+        position: absolute
+        overflow: hidden
+        top: 0
+        left: 0
+        +opacity(0.25)
+        img
+          width: 100%
+          height: 100%
+
       .dropbox
         position: absolute
         overflow: hidden
@@ -425,8 +441,8 @@ p.formnote
             height: 100%
         .scaler
           position: absolute
-          top: 200px
-          left: 160px
+          top: 640px
+          left: 240px
           width: 480px
           height: 100px
           color: white

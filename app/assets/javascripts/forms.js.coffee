@@ -250,26 +250,27 @@ jQuery ($) ->
 
 
 
-  tabs = []
+  tabs = {}
   class Tab
     constructor: (element) ->
       @element = $(element)
       @selector = @element.attr('data-reveal')
       @showing = @element.hasClass('here')
       @element.click @show
-      tabs.push @
+      tabs[@element.attr('href')] = @
+
     show: (e) =>
       e.preventDefault() if e
       Tab.hide()
       $(@selector).fadeIn()
       @element.blur().addClass('here')
+      
     hide: (e) =>
       e.preventDefault() if e
       $(@selector).hide()
       @element.removeClass('here')
     @hide: ->
-      $.each tabs, ->
-        @hide()
+      tab.hide() for key, tab of tabs
 
   $.fn.tab = ->
     @each ->
