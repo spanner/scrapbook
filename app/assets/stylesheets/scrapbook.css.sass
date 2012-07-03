@@ -159,11 +159,14 @@ p.formnote
           p
             margin: 0
             margin-bottom: 0.25em
-        &.image
+      &.image
+        #body
           padding: 0
+          height: 720px
           p
             margin: 10px
-        &.word, &.phrase
+      &.word, &.phrase
+        #body
           line-height: 1.05
       #caption
         position: relative
@@ -174,7 +177,9 @@ p.formnote
         #metadata
           width: 45%
           h2
-            margin: 0 0 0.5em 0
+            margin: 0 0 0.25em 0
+          p
+            margin: 0 0 0.25em 0
         #reactions
           width: 50%
           float: right

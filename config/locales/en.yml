@@ -25,6 +25,7 @@ en:
   overview: "Overview"
   password_requirements: "Your password must have at least six characters including one uppercase, one lowercase and one numeral."
   preferences: "Preferences"
+  save_changes: "Save changes"
   save_scrap: "Save scrap"
   scrapbook: "Scrapbook"
   send_reset_instructions: "Send reset instructions"

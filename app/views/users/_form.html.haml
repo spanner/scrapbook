@@ -32,10 +32,5 @@
       = f.password_field :password_confirmation, :class => 'preferences'
 
     .controls
-      .cancel.button
-        / - if current_user.admin?
-        /   = link_to t(:cancel), admin_people_url
-        / - else
-        /   = link_to t(:cancel), person_url(current_user.person)
-      .save.button
-        = link_to 'save changes', '#', :class => 'submit'
+      %p
+        = f.submit t(:save_changes)

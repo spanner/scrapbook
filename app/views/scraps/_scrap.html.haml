@@ -1,8 +1,6 @@
 .scrap{:class => scrap.type}
   - if scrap.image?
     = image_tag(scrap.image.url(:list))
-    %p.caption.hyphenated
-      = strip_tags(scrap.body)
   - else
     - if scrap.type == 'text' || scrap.type == 'paragraph'
       %p.sweet-justice{:style => "font-size: #{"%.2f" % scrap.text_size}em"}

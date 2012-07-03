@@ -2,8 +2,8 @@
   #body
     - if @scrap.image?
       = image_tag @scrap.image.url(:cropped)
-
-    - if @scrap.body?
+    
+    - elsif @scrap.body?
       - cssclass = 'sweet-justice'
       - if @scrap.type == 'text' || @scrap.type == 'paragraph'
         %div.text.sweet-justice{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
@@ -18,6 +18,9 @@
     #metadata
       %h2
         = @scrap.name
+      - if @scrap.description?
+        = simple_format @scrap.description
+          
       - if @scrap.created_by
         %p
           = t :uploaded_by
