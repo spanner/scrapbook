@@ -21,7 +21,7 @@ class Scrap < ActiveRecord::Base
     count = reactions.count
     json = {
       :size => count,
-      :scrap_id => name
+      :name => name
     }
     scores.each do |score|
       unless json[score.scale.name]
