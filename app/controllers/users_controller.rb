@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ScrapbookController
   respond_to :html
   before_filter :authenticate_user!
   before_filter :get_user
