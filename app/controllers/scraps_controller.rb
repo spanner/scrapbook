@@ -1,4 +1,4 @@
-class ScrapsController < ApplicationController
+class ScrapsController < ScrapbookController
   respond_to :html, :js, :json
   
   before_filter :authenticate_user!
