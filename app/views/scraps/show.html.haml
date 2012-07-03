@@ -1,22 +1,23 @@
 #scrap{:class => @scrap.type}
-  - if @scrap.image?
-    = image_tag @scrap.image.url(:cropped)
+  #body
+    - if @scrap.image?
+      = image_tag @scrap.image.url(:cropped)
 
-  - if @scrap.body?
-    - cssclass = 'sweet-justice'
-    - if @scrap.type == 'text' || @scrap.type == 'paragraph'
-      %div.sweet-justice{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
-        = simple_format(@scrap.body)
-    - else
-      %div.sweet-hyphens{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
-        = simple_format(@scrap.body)
+    - if @scrap.body?
+      - cssclass = 'sweet-justice'
+      - if @scrap.type == 'text' || @scrap.type == 'paragraph'
+        %div.text.sweet-justice{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
+          = simple_format(@scrap.body)
+      - else
+        %div.text.sweet-hyphens{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
+          = simple_format(@scrap.body)
     
-#caption
-  #reaction
-    = render :partial => 'reactions/react', :@scrap => @scrap
-  #metadata
-    %h2
-      = @scrap.name
-    %p
-      = t :uploaded_by
-      = @scrap.created_by.forename
+  #caption
+    #reaction
+      = render :partial => 'reactions/react', :@scrap => @scrap
+    #metadata
+      %h2
+        = @scrap.name
+      %p
+        = t :uploaded_by
+        = @scrap.created_by.forename
