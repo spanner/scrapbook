@@ -12,7 +12,8 @@ class Scrap < ActiveRecord::Base
                :list => "230x174#"
              }
 
-  attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description
+  attr_accessor :scrap_type
+  attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
   
   def type
     if image?

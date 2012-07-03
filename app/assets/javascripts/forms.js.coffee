@@ -254,16 +254,19 @@ jQuery ($) ->
   class Tab
     constructor: (element) ->
       @element = $(element)
+      @name = @element.attr('href').replace('#', '')
       @selector = @element.attr('data-reveal')
       @showing = @element.hasClass('here')
       @element.click @show
-      tabs[@element.attr('href')] = @
+      tabs[@name] = @
+      @show() if @showing
 
     show: (e) =>
       e.preventDefault() if e
       Tab.hide()
       $(@selector).fadeIn()
       @element.blur().addClass('here')
+      $('input.tabbed').val(@name)
       
     hide: (e) =>
       e.preventDefault() if e

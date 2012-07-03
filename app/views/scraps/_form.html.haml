@@ -34,6 +34,7 @@
       = link_to t(:video), '#video', :class => 'unavailable', :'data-reveal' => '.video'
       = link_to t(:text), '#text', :class => 'tab', :'data-reveal' => '.text'
       = link_to t(:image), '#image', :class => 'tab here', :'data-reveal' => '.image'
+      = f.hidden_field :scrap_type, :class => 'tabbed'
   
     #metadata
       %h2
