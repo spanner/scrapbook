@@ -69,7 +69,7 @@ protected
     @scraps = @scraps.tagged_with_all_of(@tags) if @tags.any?
     @fragments.each { |frag| @scraps = @scraps.matching(frag) }
 
-    @show = params[:show] || 20
+    @show = params[:show] || 10
     @page = params[:page] || 1
     @scraps = @scraps.page(@page).per(@show) unless @show == 'all'
   end
@@ -83,6 +83,11 @@ protected
   end
   
   def update_scrap
+    if params[:scrap][:scrap_type] == 'image'
+      params[:scrap][:body] = ""
+    else
+      params[:scrap][:image_upload_id] = nil
+    end
     @scrap.update_attributes(params[:scrap])
   end
 
