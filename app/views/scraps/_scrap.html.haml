@@ -4,6 +4,11 @@
     %p.caption.hyphenated
       = strip_tags(scrap.body)
   - else
-    %p.hyphenated{:style => "font-size: #{"%.2f" % scrap.text_size}em"}
-      = strip_tags(scrap.body)
+    - if scrap.type == 'text' || scrap.type == 'paragraph'
+      %p.sweet-justice{:style => "font-size: #{"%.2f" % scrap.text_size}em"}
+        = strip_tags(scrap.body)
+    - else
+      %p.sweet-hyphens{:style => "font-size: #{"%.2f" % scrap.text_size}em"}
+        = strip_tags(scrap.body)
+    
   = link_to '', scrap_url(scrap), :class => "scrap_link", :id => "scrap_#{scrap.id}"

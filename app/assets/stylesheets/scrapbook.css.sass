@@ -150,11 +150,14 @@ p.formnote
       margin: 0
       div
         margin: 40px 80px 50px 50px
+        p
+          margin: 0
+          margin-bottom: 0.25em
       &.image
         padding: 0
         p
           margin: 10px
-      &.word
+      &.word, &.phrase
         line-height: 1.05
     #caption
       position: relative
@@ -204,6 +207,8 @@ p.formnote
             background-color: rgba(0,0,0,0.5)
             color: white
         &.word
+          line-height: 1.05
+        &.phrase
           line-height: 1.1
 
   #account

@@ -15,7 +15,6 @@
 #= require lib/extensions
 #= require jquery.nouislider
 #= require modernizr
-#= require typeset/jquery.hypher
-#= require typeset/en-gb
+#= require sweet-justice
 #= require forms
 #= require script

@@ -21,7 +21,6 @@ jQuery ($) ->
           
   $.fn.activate = () ->
     @find("input.slider").slider()
-    @find('p.hyphenated').hyphenate('en-gb');
     @
 
   $ ->
