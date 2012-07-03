@@ -15,6 +15,25 @@ class Scrap < ActiveRecord::Base
   attr_accessor :scrap_type
   attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
   
+  scope :with_reactions, select("scraps.*").joins("INNER JOIN reactions on reactions.scrap_id = scraps.id").having("count(reactions.scrap_id) > 0")
+  default_scope includes(:reactions)
+
+  def as_json(options={})
+    count = reactions.count
+    json = {
+      :size => count,
+      :scrap_id => name
+    }
+    scores.each do |score|
+      unless json[score.scale.name]
+        json[score.scale.name] = score.value/count
+      else
+        json[score.scale.name] += score.value/count
+      end
+    end
+    json
+  end
+  
   def type
     if image?
       'image'

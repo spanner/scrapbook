@@ -13,10 +13,10 @@ class Reaction < ActiveRecord::Base
     where ["reactions.created_by_id = ?", user.id]
   }
   
+  default_scope includes(:scores)
+  
   def as_json(options={})
     
-    # x = scores.on_scale('affection')[0].value
-    # y = scores.on_scale('usness')[0].value
     json = {
       :size => 1
     }
