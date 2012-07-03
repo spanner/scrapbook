@@ -1,0 +1,11 @@
+- if @scraps.any?
+  = render :partial => "scrap", :collection => @scraps
+
+  .pagination
+    = paginate @scraps, :params => {:format => nil}
+  
+- else
+  .nomatch
+    %h2
+      = t :sorry_no_matches
+

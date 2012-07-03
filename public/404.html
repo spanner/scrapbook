@@ -1,26 +1,200 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Scrapbook: Naturally, something went wrong</title>
+  <link type="text/css" rel="stylesheet" media="screen" href="http://fast.fonts.com/cssapi/39788b9e-bfde-4f08-a9c5-5b2c08e0c676.css">
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
+    body {
+      background-color: #f2f0ed;
+      color: #4d4e53;
+      font-family: "Trade Gothic W01 Light", helvetica, arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1.5;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    a {
+      color: #d1005d;
+      text-decoration: none;
+    }
+    /* line 106, ../../app/assets/stylesheets/_definitions.sass */
+    a:hover {
+      color: #eb0068;
+      text-shadow: 0 0 5px white;
+    }
+    /* line 109, ../../app/assets/stylesheets/_definitions.sass */
+    a:active {
+      color: #b70052;
+    }
+
+    /* line 19, ../../app/assets/stylesheets/scrapbook.css.sass */
+    strong, b {
+      font-family: "Trade Gothic W01 Bold 2", helvetica, arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* line 22, ../../app/assets/stylesheets/scrapbook.css.sass */
+    em, i {
+      font-family: "TradeGothicW01-LightObl", helvetica, arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* line 25, ../../app/assets/stylesheets/scrapbook.css.sass */
+    h1, h2 {
+      line-height: 1;
+      font-family: "TradeGothicNextSRW01-He", helvetica, arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* line 29, ../../app/assets/stylesheets/scrapbook.css.sass */
+    h1.pagetitle {
+      margin: 0;
+      margin-top: -8px;
+      font-size: 4em;
+      font-family: "TradeGothicNextSRW01-He", helvetica, arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+      text-transform: uppercase;
+    }
+
+    /* line 85, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .note, .formnote {
+      font-size: 0.8em;
+      color: #b3b3b3;
+      line-height: 1.3;
+    }
+
+    /* line 90, ../../app/assets/stylesheets/scrapbook.css.sass */
+    p.formnote {
+      clear: left;
+      margin-top: 3px;
+    }
+
+    /* line 95, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation p {
+      margin: 0;
+      font-size: 1.4em;
+      line-height: 32px;
+    }
+    /* line 99, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a {
+      display: inline-block;
+      margin: 2px 6px 0 0;
+      padding: 2px 0 0 36px;
+      color: #b3b3b3;
+      background-image: url(/assets/navigation.png);
+      background-position: 0 0;
+      background-repeat: no-repeat;
+    }
+    /* line 106, ../../app/assets/stylesheets/_definitions.sass */
+    .navigation a:hover {
+      color: #eb0068;
+      text-shadow: 0 0 5px white;
+    }
+    /* line 109, ../../app/assets/stylesheets/_definitions.sass */
+    .navigation a:active {
+      color: #b70052;
+    }
+    /* line 109, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a:hover {
+      background-position: 0 -32px;
+    }
+    /* line 112, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.chart {
+      background-position: 0 -64px;
+    }
+    /* line 114, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.chart:hover {
+      background-position: 0 -96px;
+    }
+    /* line 116, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.add {
+      background-position: 0 -128px;
+    }
+    /* line 118, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.add:hover {
+      background-position: 0 -160px;
+    }
+    /* line 120, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.preferences {
+      background-position: 0 -256px;
+    }
+    /* line 122, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.preferences:hover {
+      background-position: 0 -288px;
+    }
+    /* line 124, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.logout {
+      background-position: 0 -192px;
+    }
+    /* line 126, ../../app/assets/stylesheets/scrapbook.css.sass */
+    .navigation a.logout:hover {
+      background-position: 0 -224px;
+    }
+
+    /* line 130, ../../app/assets/stylesheets/scrapbook.css.sass */
+    #container {
+      position: relative;
+      width: 960px;
+      margin: 40px auto;
+    }
+    /* line 134, ../../app/assets/stylesheets/scrapbook.css.sass */
+    #container #header {
+      position: relative;
+      height: 40px;
+      overflow: hidden;
+    }
+    /* line 138, ../../app/assets/stylesheets/scrapbook.css.sass */
+    #container #header h1 {
+      float: left;
+      font-family: "TradeGothicNextSRW01-He", helvetica, arial, sans-serif;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 2em;
+      margin: 0;
+    }
+    /* line 143, ../../app/assets/stylesheets/scrapbook.css.sass */
+    #container #header h1 a {
+      color: #b3b3b3;
+    }
+    /* line 106, ../../app/assets/stylesheets/_definitions.sass */
+    #container #header h1 a:hover {
+      color: #eb0068;
+      text-shadow: 0 0 5px white;
+    }
+    #container #header h1 a:active {
+      color: #b70052;
+    }
+    #content {
+      min-height: 500px;
+      background-color: white;
+      padding: 60px;
+    }
   </style>
 </head>
-
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+  <div id='container'>
+    <div id='header'>
+      <h1>
+        <a href="/">Scrapbook</a>
+      </h1>
+    </div>
+    <div id='content'>
+      <div id="dialog">
+        <h1 class="pagetitle">404: Not found</h1>
+        <p>Something that you requested does not exist, or perhaps you are not supposed to see it.</p>
+        <p>
+          If you followed a link on the site, please <a href="mailto:will@spanner.org">let Will know</a> immediately. He will burn with shame until the error is fixed.
+          Otherwise, please stop typing and try one of the many excellent links on our <a href="/">home page</a>.
+        </p>
+        <p> 
+          If this is our home page, please disregard this advice and visit a site that works.
+        </p>
+      </div>
+    </div>
   </div>
 </body>
 </html>
