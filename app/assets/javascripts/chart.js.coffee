@@ -5,17 +5,17 @@
 
 jQuery ($) ->
   $.fn.chart = () ->
-    c = document.getElementById("axis")
-    context=c.getContext("2d")
-    c.height = 800
-    c.width = 800
-    context.lineWidth = 2;
-    context.moveTo(0,400.5)
-    context.lineTo(800,400.5)
-    context.moveTo(400.5,0)
-    context.lineTo(400.5,800)
-    context.stroke()
     @each () ->
+      c = document.getElementById("axis")
+      context=c.getContext("2d")
+      c.height = 800
+      c.width = 800
+      context.lineWidth = 2;
+      context.moveTo(0,400.5)
+      context.lineTo(800,400.5)
+      context.moveTo(400.5,0)
+      context.lineTo(400.5,800)
+      context.stroke()
       element = $(@)
       url = element.attr('rel')
       $.getJSON url, (points) ->
@@ -51,17 +51,17 @@ jQuery ($) ->
           i--
           
   $.fn.minichart = () ->
-    c = document.getElementById("axis")
-    context=c.getContext("2d")
-    c.height = 120
-    c.width = 120
-    context.lineWidth = 2;
-    context.moveTo(0,60.5)
-    context.lineTo(120,60.5)
-    context.moveTo(60.5,0)
-    context.lineTo(60.5,120)
-    context.stroke()
     @each () ->
+      c = document.getElementById("axis")
+      context=c.getContext("2d")
+      c.height = 120
+      c.width = 120
+      context.lineWidth = 2;
+      context.moveTo(0,60.5)
+      context.lineTo(120,60.5)
+      context.moveTo(60.5,0)
+      context.lineTo(60.5,120)
+      context.stroke()
       element = $(@)
       url = element.attr('rel')
       $.getJSON url, (points) ->
