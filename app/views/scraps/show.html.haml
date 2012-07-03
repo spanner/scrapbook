@@ -18,6 +18,7 @@
     #metadata
       %h2
         = @scrap.name
-      %p
-        = t :uploaded_by
-        = @scrap.created_by.forename
+      - if @scrap.created_by
+        %p
+          = t :uploaded_by
+          = @scrap.created_by.forename

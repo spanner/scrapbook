@@ -5,14 +5,14 @@ class Scrap < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
   has_upload :image, 
-             :geometry => "960x720#", 
+             :geometry => "960x720#",
              :styles => {
                :icon => "48x48#",
                :thumb => "100x100#",
                :list => "230x174#"
              }
 
-  attr_accessible :name, :body, :image
+  attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description
   
   scope :with_reactions, select("scraps.*").joins("INNER JOIN reactions on reactions.scrap_id = scraps.id").having("count(reactions.scrap_id) > 0")
   default_scope includes(:reactions)

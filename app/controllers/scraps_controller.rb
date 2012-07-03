@@ -25,6 +25,10 @@ class ScrapsController < ApplicationController
   def update
     respond_with(@scrap)
   end
+
+  def create
+    respond_with(@scrap)
+  end
   
   def chart
     @reactions 
