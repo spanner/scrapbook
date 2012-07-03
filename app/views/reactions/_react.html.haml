@@ -2,7 +2,7 @@
 
 - if @reaction
   #reactions.minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
-  
+    %canvas#axis
 - else
   - reaction = current_user.reactions.build(:scrap => @scrap)
   = form_for reaction do |f|
