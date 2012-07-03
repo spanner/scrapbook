@@ -1,4 +1,4 @@
-class ScrapsController < ScrapbookController
+class ScrapsController < ApplicationController
   respond_to :html, :js, :json
   
   before_filter :authenticate_user!
@@ -9,12 +9,12 @@ class ScrapsController < ScrapbookController
 
   def index
     respond_with(@scraps) do |format|
-      format.js { render :partial => 'search_results' }
+      format.js { render :partial => 'scrap_list' }
     end
   end
 
   def show
-    @reaction = current_user.reaction_to(@scrap).first()
+    @reaction = current_user.reaction_to(@scrap)
     respond_with(@scrap)
   end
 
@@ -24,15 +24,6 @@ class ScrapsController < ScrapbookController
 
   def update
     respond_with(@scrap)
-  end
-
-  def create
-    respond_with(@scrap)
-  end
-  
-  def chart
-    @reactions 
-    respond_with(@reactions)
   end
 
 protected
@@ -83,11 +74,6 @@ protected
   end
   
   def update_scrap
-    if params[:scrap][:scrap_type] == 'image'
-      params[:scrap][:body] = ""
-    else
-      params[:scrap][:image_upload_id] = nil
-    end
     @scrap.update_attributes(params[:scrap])
   end
 

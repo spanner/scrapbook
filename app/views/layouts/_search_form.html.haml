@@ -1,0 +1,5 @@
+#searchform
+  %form{:action => scraps_url, :id => 'scrap_search'}
+    = form_tag do
+      %p
+        = text_field_tag(:tag, params[:tag], :tag => 'tag', :class => 'search')

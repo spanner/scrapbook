@@ -21,14 +21,16 @@ jQuery ($) ->
           
   $.fn.activate = () ->
     @find("input.slider").slider()
-    @
+    @  
+
 
 $ ->
   $('body').activate()
   $('.minichart').minichart()
   $('.bigchart').chart()
+  $('#scrap_search .search').keyup () ->
+    $(@).parent().parent().submit()
   
   disqus_shortname = 'scrapbok'
   disqus_category_id = 'scraps'
   disqus_title = 'Scrapbook'
-
