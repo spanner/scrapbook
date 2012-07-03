@@ -13,4 +13,19 @@ class Reaction < ActiveRecord::Base
     where ["reactions.created_by_id = ?", user.id]
   }
   
+  def as_json(options={})
+    
+    # x = scores.on_scale('affection')[0].value
+    # y = scores.on_scale('usness')[0].value
+    json = {
+      :size => 1
+    }
+    scores.each do |sc|
+      json[sc.scale.name] = sc.value
+    end
+    json
+
+  end
 end
+
+

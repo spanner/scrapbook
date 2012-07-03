@@ -1,7 +1,7 @@
 - scrap ||= @scrap
 
 - if @reaction
-  #reactions.minichart{:rel => chart_scrap_url(@scrap)}
+  #reactions.minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
   
 - else
   - reaction = current_user.reactions.build(:scrap => @scrap)
