@@ -27,4 +27,12 @@ class Scrap < ActiveRecord::Base
       'text'
     end
   end
+  
+  def text_size
+    if l = body.length
+      ((200.0/(l+20)) + 0.25)
+    else
+      1
+    end
+  end
 end

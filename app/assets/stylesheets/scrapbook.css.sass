@@ -14,11 +14,8 @@ body
 a
   color: $rubine
   text-decoration: none
-  &:hover
-    color: $hover
-  &:active
-    color: $active
-
+  +hover
+  
 strong, b
   +bold
 
@@ -89,6 +86,40 @@ p.formnote
   clear: left
   margin-top: 3px
 
+.navigation
+  p
+    margin: 0
+    font-size: 1.4em
+    line-height: 32px
+  a
+    display: inline-block
+    margin: 2px 6px 0 0
+    padding: 2px 0 0 36px
+    color: $mid
+    background:
+      image: image-url('navigation.png')
+      position: 0 0
+      repeat: no-repeat
+    +hover
+    &:hover
+      background-position: 0 -32px
+    &.grid
+    &.chart
+      background-position: 0 -64px
+      &:hover
+        background-position: 0 -96px
+    &.add
+      background-position: 0 -128px
+      &:hover
+        background-position: 0 -160px
+    &.preferences
+      background-position: 0 -256px
+      &:hover
+        background-position: 0 -288px
+    &.logout
+      background-position: 0 -192px
+      &:hover
+        background-position: 0 -224px
 
   
 #container
@@ -106,37 +137,10 @@ p.formnote
       margin: 0
       a
         color: $mid
-        &:hover
-          color: $hover
-    #navigation
+        +hover
+    #nav
       float: right
-      p
-        margin: 0
-        font-size: 1.4em
-      a
-        display: inline-block
-        margin: 3px 6px 0 0
-        padding: 2px 5px 5px 32px
-        color: $mid
-        background:
-          image: image-url('navigation.png')
-          position: 0 0
-          repeat: no-repeat
-        &:hover
-          background-position: 0 -32px
-          color: $hover
-        &.grid
-        &.chart
-          background-position: 0 -64px
-          &:hover
-            background-position: 0 -96px
-        &.add
-          background-position: 0 -128px
-          &:hover
-            background-position: 0 -160px
-        &.logout
-          background-position: 0 -192px
-      
+            
   #content
     #scrap
       position: relative
@@ -144,21 +148,14 @@ p.formnote
       min-height: $content-height
       background-color: $verypale
       margin: 0
-      p
-        margin: 50px
+      div
+        margin: 40px 80px 50px 50px
       &.image
         padding: 0
         p
           margin: 10px
       &.word
-        font-size: 10em
         line-height: 1.05
-      &.phrase
-        font-size: 4em
-      &.paragraph
-        font-size: 2em
-      &.text
-        font-size: 1em
     #caption
       position: relative
       background-color: white
@@ -207,14 +204,7 @@ p.formnote
             background-color: rgba(0,0,0,0.5)
             color: white
         &.word
-          font-size: 3.5em
           line-height: 1.1
-        &.phrase
-          font-size: 2em
-        &.paragraph
-          font-size: 1.2em
-        &.text
-          font-size: 0.7em
 
   #account
     width: 800px
@@ -244,8 +234,12 @@ p.formnote
         color: $mid
         &:hover
           color: $hover
-
+  #footer
+    position: relative
+    clear: both
+    padding: 50px 0 0 0
   #colophon
+    position: relative
     clear: both
     font-size: 75%
     color: $mid

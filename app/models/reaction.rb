@@ -13,12 +13,4 @@ class Reaction < ActiveRecord::Base
     where ["reactions.created_by_id = ?", user.id]
   }
   
-  def as_json(options={})
-    x = scores.on_scale('')
-    y = scores.on_scale('')
-    {
-      :x =>
-      :y =>
-    }
-  end
 end
