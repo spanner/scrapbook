@@ -491,3 +491,44 @@ p.formnote
                 height: 32px
                 background: transparent image-url('slider.png') no-repeat top left
                 cursor: move
+
+.pagination
+  position: relative
+  clear: left
+  margin: 40px 0
+  height: 40px
+  span
+    display: block
+    float: left
+    margin-right: 5px
+    a
+      display: block
+      background-color: $light
+      color: $mid
+      padding: 5px 10px
+      min-width: 16px
+      text-align: center
+      +box-shadow(0 1px 3px #333)
+      &:hover
+        background-color: $hover
+        color: white
+      &:active
+        background-color: $active
+        +box-shadow(0 0 0 0)
+        
+      &:visited
+        color: $dark
+    &.current
+      +bold
+      background-color: white
+      +box-shadow(0 1px 3px #333)
+      color: $mid
+      padding: 5px 10px
+      min-width: 16px
+      text-align: center
+    &.gap
+      border: 1px solid white
+      padding: 5px 10px
+      min-width: 16px
+      text-align: center
+      color: $dark

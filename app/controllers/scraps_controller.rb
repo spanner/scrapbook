@@ -14,7 +14,7 @@ class ScrapsController < ScrapbookController
   end
 
   def show
-    @reaction = current_user.reaction_to(@scrap)
+    @reaction = current_user.reaction_to(@scrap).first()
     respond_with(@scrap)
   end
 
@@ -69,7 +69,7 @@ protected
     @scraps = @scraps.tagged_with_all_of(@tags) if @tags.any?
     @fragments.each { |frag| @scraps = @scraps.matching(frag) }
 
-    @show = params[:show] || 10
+    @show = params[:show] || 20
     @page = params[:page] || 1
     @scraps = @scraps.page(@page).per(@show) unless @show == 'all'
   end
