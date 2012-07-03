@@ -23,7 +23,8 @@ jQuery ($) ->
     @find("input.slider").slider()
     @
 
-  $ ->
-    $('body').activate()
-    $('#reactions.minichart').minichart()
-    
+$ ->
+  $('body').activate()
+  $('.minichart').minichart()
+  $('.bigchart').chart()
+  
