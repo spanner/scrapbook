@@ -406,3 +406,6 @@ $ ->
   $('textarea.body').self_sizes()
   $('.dropbox').uploader()
   $('#searchform.fast form').searchform()
+  $("input.slider").slider()
+  $('#new_reaction').reactor()
+  
