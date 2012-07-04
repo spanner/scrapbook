@@ -384,20 +384,15 @@ jQuery ($) ->
       else
         @display @original_content
       
-  $.fn.fast = ->
-    @each ->
-      form = $(this)
-      form.find("input[type=\"search\"]").not(".suggestible").addClass("significant").keyup (e) ->
-        k = e.which
-        form.submit()  if (k >= 49 and k <= 122) or k
-
   $.fn.searchform = (options) ->
     options = $.extend(
       replacing: "#scraps"
       historical: true
     , options)
     @each ->
-      new Searchform @, options
+      form = new Searchform @, options
+      $(@).find('input[type="search"]').keyup () ->
+        form.submit()
     @
 
 $ -> 
@@ -409,4 +404,4 @@ $ ->
   $('.tab').tab()
   $('textarea.body').self_sizes()
   $('.dropbox').uploader()
-  $('#searchform.fast form').fast().searchform()
+  $('#searchform.fast form').searchform()
