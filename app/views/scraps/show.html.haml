@@ -21,10 +21,10 @@
       - if @scrap.description?
         = simple_format @scrap.description
           
-      - if @scrap.created_by
+      - if @scrap.user
         %p
           = t :uploaded_by
-          = @scrap.created_by.forename
+          = @scrap.user.forename
 
   #discussion
     #disqus_thread
