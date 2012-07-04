@@ -342,20 +342,6 @@ jQuery ($) ->
           
       , "html"
 
-
-  $.fn.search = ->
-    @each ->
-      $(@).parent().on 'ajax:complete', (headers, response, html) ->
-        $('#scraps').children().remove()
-        $('#scraps').append(response.responseText)
-      $(@).keyup () ->
-        $(@).parent().submit()
-
-
-
-
-
-
   History = window.History
 
   class Searchform
@@ -386,7 +372,7 @@ jQuery ($) ->
         if @options.historical
           History.pushState
             results: results
-          , "Scraps matching " + query, url
+          , "Scraps matching ", url
 
     display: (results) =>
       $(@options.replacing).replaceWith results
@@ -398,6 +384,12 @@ jQuery ($) ->
       else
         @display @original_content
       
+  $.fn.fast = ->
+    @each ->
+      form = $(this)
+      form.find("input[type=\"search\"]").not(".suggestible").addClass("significant").keyup (e) ->
+        k = e.which
+        form.submit()  if (k >= 49 and k <= 122) or k
 
   $.fn.searchform = (options) ->
     options = $.extend(
@@ -408,7 +400,6 @@ jQuery ($) ->
       new Searchform @, options
     @
 
-
 $ -> 
   $('#flashes p:parent').flash()
   $('input.labelled, textarea.labelled').self_label()
@@ -418,4 +409,4 @@ $ ->
   $('.tab').tab()
   $('textarea.body').self_sizes()
   $('.dropbox').uploader()
-  $('#searchform.fast .search').search()
+  $('#searchform.fast form').fast().searchform()
