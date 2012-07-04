@@ -18,19 +18,20 @@
       %span.formnote
         = t :administrative_email_is_private
 
-    %p
-      = f.label :password
-      %br
-      = f.password_field :password, :autocomplete => "off", :class => 'preferences password'
-      %br
-      %span.formnote
-        = t :password_requirements
+    - unless @user.new_record?
+      %p
+        = f.label :password
+        %br
+        = f.password_field :password, :autocomplete => "off", :class => 'preferences password'
+        %br
+        %span.formnote
+          = t :password_requirements
 
-    %p{:class => 'confirmation'}
-      = f.label :password_confirmation
-      %br
-      = f.password_field :password_confirmation, :class => 'preferences'
+      %p{:class => 'confirmation'}
+        = f.label :password_confirmation
+        %br
+        = f.password_field :password_confirmation, :class => 'preferences'
 
     .controls
       %p
-        = f.submit t(:save_changes)
+        = f.submit t(@user.new_record? ? :send_invitation : :save_changes)

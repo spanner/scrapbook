@@ -18,6 +18,7 @@ class Scrap < ActiveRecord::Base
   scope :with_reactions, select("scraps.*").joins("LEFT OUTER JOIN reactions on reactions.scrap_id = scraps.id").group("scraps.id").having("count(reactions.scrap_id) > 0")
   
   before_save :record_creator
+  before_save :combine_texts
   
   scope :matching, lambda { |fragment| 
     fragment = "%#{fragment}%"
@@ -77,6 +78,11 @@ protected
 
   def record_creator
     self.user ||= User.current
+  end
+  
+  def combine_texts
+    texts = [name, body, image_file_name] + tags.map(&:name)
+    self.combined_text = texts.join(' ').searchable
   end
 
 end
