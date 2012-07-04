@@ -1,6 +1,7 @@
 Scrapbook::Application.routes.draw do
 
   devise_for :users
+  
   resources :users, :only => [:edit, :update] do
     get 'welcome', :action => :welcome, :on => :member
     get 'invitation', :action => :invitation, :on => :member
