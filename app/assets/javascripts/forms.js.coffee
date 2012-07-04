@@ -333,10 +333,16 @@ jQuery ($) ->
           form.removeClass "waiting"
           form.hide()
           form.after(replacement)
-          $('.minichart').minichart()
           $('#discussion').show()
+          $('.minichart').minichart()
           
       , "html"
+
+  $.fn.show_discussion = () ->
+    $('#discussion').show() if @.length
+
+
+
 
   History = window.History
 
@@ -391,6 +397,7 @@ jQuery ($) ->
         k = e.which
         form.submit()  if (k >= 49 and k <= 122)
     @
+    
 
 $ -> 
   $('#flashes p:parent').flash()
@@ -404,4 +411,5 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider()
   $('#new_reaction').reactor()
+  $('#reacted').show_discussion()
   
