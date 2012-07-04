@@ -391,8 +391,9 @@ jQuery ($) ->
     , options)
     @each ->
       form = new Searchform @, options
-      $(@).find('input[type="search"]').keyup () ->
-        form.submit()
+      $(@).find('input[type="search"]').keyup (e) ->
+        k = e.which
+        form.submit()  if (k >= 49 and k <= 122)
     @
 
 $ -> 
