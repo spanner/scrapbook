@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(:version => 20120703162138) do
     t.integer  "scrap_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "updated_by_id"
   end
 
   create_table "scales", :force => true do |t|

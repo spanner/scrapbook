@@ -1,4 +1,4 @@
-class ScrapsController < ScrapbookController
+class ScrapsController < ApplicationController
   respond_to :html, :js, :json
   
   before_filter :authenticate_user!
@@ -9,7 +9,7 @@ class ScrapsController < ScrapbookController
 
   def index
     respond_with(@scraps) do |format|
-      format.js { render :partial => 'search_results' }
+      format.js { render :partial => 'scrap_list' }
     end
   end
 

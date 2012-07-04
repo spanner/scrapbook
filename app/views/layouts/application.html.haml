@@ -23,6 +23,7 @@
         = link_to t(:scrapbook), "/"
       - if user_signed_in?
         #nav.navigation
+          = render 'layouts/search_form'
           %p
             = link_to t(:latest), '/', :class => 'grid'
             = link_to t(:overview), reactions_url, :class => 'chart'

@@ -19,6 +19,18 @@ class Scrap < ActiveRecord::Base
   
   before_save :record_creator
   before_update :record_updater
+  default_scope includes(:reactions)
+  
+  scope :tagged_with_all_of, lambda { |tags|
+    placeholders = tags.map{'?'}.join(',')
+    tag_count = tags.size
+    select("scraps.*").joins("INNER JOIN taggings as tt on tt.scrap_id = scraps.id").where(["tt.tag_id in(#{placeholders})"] + tags.map(&:id)).group("scraps.id").having("count(tt.id) = #{tag_count}")
+  }
+
+  scope :name_matching, lambda { |fragment| 
+    fragment = "%#{fragment}%"
+    where('scraps.name like ?', fragment)
+  }
 
   def average_score_for(scale)
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale
