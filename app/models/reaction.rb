@@ -42,10 +42,6 @@ protected
     self.user ||= User.current
   end
 
-  def record_updater
-    self.updated_by ||= User.current
-  end
-
 end
 
 

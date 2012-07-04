@@ -18,7 +18,6 @@ class Scrap < ActiveRecord::Base
   scope :with_reactions, select("scraps.*").joins("INNER JOIN reactions on reactions.scrap_id = scraps.id").having("count(reactions.scrap_id) > 0")
   
   before_save :record_creator
-  before_update :record_updater
 
   def average_score_for(scale)
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale
@@ -68,10 +67,6 @@ protected
 
   def record_creator
     self.user ||= User.current
-  end
-
-  def record_updater
-    self.updated_by ||= User.current
   end
 
 end
