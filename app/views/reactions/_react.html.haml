@@ -1,27 +1,28 @@
 - scrap ||= @scrap
 
 - if @reaction
-  .minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
-    %canvas#axis
-  .summary
-    %h4
-      Your reaction
-    %p
-      Us
-      %strong
-        = @reaction.score_for('usness')
-      Like: 
-      %strong
-        = @reaction.score_for('affection')
-    %h4
-      Average reaction
-    %p
-      Us
-      %strong
-        = scrap.average_score_for('usness')
-      Like: 
-      %strong
-        = scrap.average_score_for('affection')
+  #reacted
+    .minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
+      %canvas#axis
+    .summary
+      %h4
+        Your reaction
+      %p
+        Us
+        %strong
+          = @reaction.score_for('usness')
+        Like: 
+        %strong
+          = @reaction.score_for('affection')
+      %h4
+        Average reaction
+      %p
+        Us
+        %strong
+          = scrap.average_score_for('usness')
+        Like: 
+        %strong
+          = scrap.average_score_for('affection')
         
 - else
 
