@@ -31,3 +31,11 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+namespace :filing do
+  task :create_symlink, :roles => :app do
+    run "ln -s #{shared_path}/config/database.yml #{current_release}/config/database.yml" 
+  end
+end
+
+before "deploy:assets:precompile", "filing:create_symlink"

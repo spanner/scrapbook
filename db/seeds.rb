@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-# will = User.create(:email => 'will@spanner.org', :forename => "Will", :surname => "Ross", :password => "foobar", :password_confirmation => "foobar", :admin => true, :activated => true)
+#will = User.create(:email => 'will@spanner.org', :forename => "Will", :surname => "Ross", :password => "foobar", :password_confirmation => "foobar", :admin => true, :activated => true)
 mike = User.create(:email => 'mike@spanner.org', :forename => "Mike", :surname => "McIver", :password => "foobar", :password_confirmation => "foobar") do |u|
   u.activate!
 end
