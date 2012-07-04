@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703093801) do
+ActiveRecord::Schema.define(:version => 20120704090357) do
 
   create_table "reactions", :force => true do |t|
     t.integer  "created_by_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120703093801) do
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
     t.text     "description"
+    t.string   "combined_text"
   end
 
   create_table "taggings", :force => true do |t|

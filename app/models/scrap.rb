@@ -11,6 +11,8 @@ class Scrap < ActiveRecord::Base
                :thumb => "100x100#",
                :list => "230x174#"
              }
+             
+  before_save :gather_text
 
   attr_accessor :scrap_type
   attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
@@ -20,7 +22,7 @@ class Scrap < ActiveRecord::Base
   
   scope :matching, lambda { |fragment| 
     fragment = "%#{fragment}%"
-    where('scraps.name like ?', fragment)
+    where('scraps.body like :frag OR scraps.name like :frag', :frag => fragment)
   }
   
   scope :tagged_with_all_of, lambda { |tags|
@@ -29,6 +31,10 @@ class Scrap < ActiveRecord::Base
     select("scraps.*").joins("INNER JOIN taggings as tt on tt.scrap_id = scraps.id").where(["tt.tag_id in(#{placeholders})"] + tags.map(&:id)).group("scraps.id").having("count(tt.id) = #{tag_count}")
   }
   
+  def gather_text
+    texts = [name, body, description] + tags.map(&:name)
+    self.combined_text = texts.join(' ').searchable
+  end
 
   def as_json(options={})
     count = reactions.count

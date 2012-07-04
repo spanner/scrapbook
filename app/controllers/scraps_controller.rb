@@ -32,8 +32,7 @@ protected
     sorts = {
       :name => 'ASC',
       :updated_at => 'DESC',
-      :created_at => 'DESC',
-      :published_at => 'DESC'
+      :created_at => 'DESC'
     }
     @by = params[:by] || 'date'
     @by = 'created_at' unless sorts[@by.to_sym]
