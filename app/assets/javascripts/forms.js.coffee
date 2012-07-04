@@ -294,7 +294,6 @@ jQuery ($) ->
         
   $.fn.self_sizes = () ->
     @each ->
-      console.log "self_sizes", @
       $(@).bind "keyup", $.size_to_fit
       $(@).bind "change", $.size_to_fit
       $.size_to_fit.apply(@)
@@ -303,7 +302,6 @@ jQuery ($) ->
   $.fn.slider = () ->
     @each () ->
       input = $(@)
-      console.log 'slider', input
       values = input.attr('data-values').split(/,\s*/)
       slider = $('<div class="sliderbar" />')
       caption = $('<span class="response" />').text(values[2])
@@ -317,7 +315,6 @@ jQuery ($) ->
         tracker: () ->
           value = slider.noUiSlider("getValue")[0]
           adjusted = (value - 50)/5
-          console.log "setting", input, "to", adjusted
           input.val(adjusted)
 
 

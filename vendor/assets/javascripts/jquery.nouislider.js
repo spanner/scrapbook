@@ -219,8 +219,6 @@
 
 								$(this).bind('click.noUiSlider',function(e){
 								
-									console.log('click');
-								
 									var dot0 = e.pageX;
 									var thebar = $(this).offset().left;
 									
