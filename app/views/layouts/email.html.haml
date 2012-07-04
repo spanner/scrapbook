@@ -1,0 +1,10 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %title
+      = @subject
+  %body{:style => "margin: 50px; font-family: 'Georgia, Baskerville, serif; font-size: 125%; line-height: 1.5;"}
+    #page{:style => "margin: 30px 40px 20px 62px;"}
+      #content
+        = yield
+
