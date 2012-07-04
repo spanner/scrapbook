@@ -54,12 +54,15 @@ jQuery ($) ->
         ,() ->
           this.marker && this.marker.hide()
 
+        res.click () ->
+          window.location.href = "/scraps/#{@data('id')}"
+
         i = names.length - 1
         res.each () ->
           @data('caption', names[i]) if name?
           @data('id', ids[i]) if name?
           i--
-        console.log $('svg circle')
+        
           
   $.fn.minichart = () ->
     @each () ->
