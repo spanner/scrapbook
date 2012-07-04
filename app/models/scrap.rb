@@ -27,7 +27,11 @@ class Scrap < ActiveRecord::Base
   def average_score_for(scale)
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale
     scores = self.scores.on_scale(scale)
-    scores.to_a.mean if scores.any?
+    total = 0
+    scores.each do |score|
+      total += score.value
+    end
+    total/scores.count
   end
 
   def as_json(options={})
