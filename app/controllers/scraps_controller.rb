@@ -31,7 +31,7 @@ class ScrapsController < ScrapbookController
   end
   
   def chart
-    @reactions 
+    @reactions = @scrap.reactions
     respond_with(@reactions)
   end
 

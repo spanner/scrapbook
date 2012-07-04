@@ -1,5 +1,5 @@
 class Scrap < ActiveRecord::Base
-  belongs_to_owners
+  belongs_to :user
   has_many :reactions
   has_many :scores, :through => :reactions
   has_many :taggings
@@ -16,7 +16,15 @@ class Scrap < ActiveRecord::Base
   attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
   
   scope :with_reactions, select("scraps.*").joins("INNER JOIN reactions on reactions.scrap_id = scraps.id").having("count(reactions.scrap_id) > 0")
-  default_scope includes(:reactions)
+  
+  before_save :record_creator
+  before_update :record_updater
+
+  def average_score_for(scale)
+    scale = Scale.find_by_name(scale) unless scale.is_a? Scale
+    scores = self.scores.on_scale(scale)
+    scores.to_a.mean if scores.any?
+  end
 
   def as_json(options={})
     count = reactions.count
@@ -55,4 +63,15 @@ class Scrap < ActiveRecord::Base
       1
     end
   end
+
+protected
+
+  def record_creator
+    self.created_by ||= User.current
+  end
+
+  def record_updater
+    self.updated_by ||= User.current
+  end
+
 end

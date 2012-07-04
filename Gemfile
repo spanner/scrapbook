@@ -5,7 +5,6 @@ gem 'rails', '3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'mysql2'
 
 # Devise for user authentication and Cancan for role-assignment.
@@ -25,29 +24,12 @@ gem 'kaminari', '~> 0.13'
 
 # Haml for templates, instead of erb.
 gem "haml-rails"
-#... with inline coffeescript for passing bootstrap data to backbone
-gem "coffee-filter"
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
-
 gem 'jquery-rails'
 gem 'json'
 
 # Redcarpet is a markdown parser and rocco generates our documentation.
 gem 'redcarpet'
 gem 'rocco'
-gem 'haml_coffee_assets'
-
 
 # Asset-handling gems are not required in production because we precompile on deployment.
 group :assets do
@@ -57,12 +39,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   # and compass is the lazy designer's friend
   gem 'compass-rails'
-  # javascript runtime on the server side for compiling coffeescript.
-  gem 'therubyracer'
   # uglifier for minification.
   gem 'uglifier', '>= 1.0.3'
   # and execjs for server side precompilation of coffeescript
   gem 'execjs'
+  gem 'therubyracer'
 end
 
 # And a fairly bulky test framework:
@@ -86,12 +67,3 @@ end
 gem 'capistrano'
 # and rvm gives us a known server-side ruby version.
 gem 'rvm-capistrano'
-
-
-# Note to self: installing nokogiri on lion
-# 1. source install of libiconv into homebrew build directory:
-#   ./configure --prefix=/usr/local/Cellar/libiconv/1.13.1 & make & make install
-# 2. link nokogiri to homebrew directories:
-#   gem install nokogiri -- --with-xml2-include=/usr/local/Cellar/libxml2/2.7.8/include/libxml2 --with-xml2-lib=/usr/local/Cellar/libxml2/2.7.8/lib --with-xslt-dir=/usr/local/Cellar/libxslt/1.1.26 --with-iconv-dir=/usr/local/Cellar/libiconv/1.13.1
-#
-# Must use similar arguments for libxml-ruby if using that. test_xml goes through nokogiri so no need.

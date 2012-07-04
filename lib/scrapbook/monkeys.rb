@@ -25,3 +25,14 @@ class NilClass
     true
   end
 end
+
+class Array
+  def sum
+    inject(nil) { |sum,x| sum ? sum + x.to_f : x.to_f }
+  end
+
+  def mean
+    sum / size
+  end
+end
+  

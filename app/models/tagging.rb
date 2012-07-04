@@ -1,3 +1,6 @@
 class Tagging < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :user
+  belongs_to :tag
+  belongs_to :scrap
+  attr_accessible :tag_id, :scrap_id
 end

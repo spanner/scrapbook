@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703093801) do
+ActiveRecord::Schema.define(:version => 20120703162138) do
 
   create_table "reactions", :force => true do |t|
-    t.integer  "created_by_id"
+    t.integer  "user_id"
     t.integer  "scrap_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20120703093801) do
     t.integer  "image_version"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.integer  "created_by_id"
+    t.integer  "user_id"
     t.integer  "updated_by_id"
     t.text     "description"
   end
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120703093801) do
     t.integer  "scrap_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "tags", :force => true do |t|
