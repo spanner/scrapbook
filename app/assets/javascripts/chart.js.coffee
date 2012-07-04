@@ -23,23 +23,27 @@ jQuery ($) ->
         ys = []
         sizes = []
         names = []
+        ids = []
         for point in points
           if point.usness
             xs.push point.usness
             ys.push point.affection
             sizes.push point.size
             names.push point.name
+            ids.push point.id
         xs.push 10
         ys.push 10
         sizes.push 0
         names.push null
+        ids.push null
         xs.push -10
         ys.push -10
         sizes.push 0
         names.push null
+        ids.push null
         canvas = Raphael('reactions')
         res = canvas.dotchart(0, 0, 800, 800, xs, ys, sizes, {max: 10, heat: true}).hover () ->
-          this.marker = this.marker || canvas.tag(this.x, this.y, "#{@id}: #{@data('caption')}", 0, this.r + 2).insertBefore(this)
+          this.marker = this.marker || canvas.tag(this.x, this.y, "#{@data('id')}: #{@data('caption')}", 0, this.r + 2).insertBefore(this)
           this.marker.show()
         ,() ->
           this.marker && this.marker.hide()
@@ -47,6 +51,7 @@ jQuery ($) ->
         i = names.length - 1
         res.each () ->
           @data('caption', names[i]) if name?
+          @data('id', ids[i]) if name?
           i--
           
   $.fn.minichart = () ->
@@ -78,7 +83,7 @@ jQuery ($) ->
         ys.push -10
         sizes.push 0
         canvas = Raphael('reactions')
-        canvas.dotchart(0, 0, 120, 120, xs, ys, sizes, {max: 3, heat: true})
+        canvas.dotchart(0, 0, 120, 120, xs, ys, sizes, {max: 4, heat: true})
 
 $ ->
   $('.minichart').minichart()

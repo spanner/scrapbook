@@ -31,14 +31,15 @@ class Scrap < ActiveRecord::Base
     scores.each do |score|
       total += score.value
     end
-    total/scores.count
+    (total/scores.count).round(2)
   end
 
   def as_json(options={})
     count = reactions.count
     json = {
       :size => count,
-      :name => name
+      :name => name,
+      :id => id
     }
     scores.each do |score|
       unless json[score.scale.name]
