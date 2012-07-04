@@ -14,7 +14,7 @@ class Reaction < ActiveRecord::Base
   }
 
   scope :from_user, lambda {|user|
-    where ["reactions.created_by_id = ?", user.id]
+    where ["reactions.user_id = ?", user.id]
   }
   
   def score_for(scale)
@@ -39,11 +39,7 @@ class Reaction < ActiveRecord::Base
 protected
 
   def record_creator
-    self.created_by ||= User.current
-  end
-
-  def record_updater
-    self.updated_by ||= User.current
+    self.user ||= User.current
   end
 
 end

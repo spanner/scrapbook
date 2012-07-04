@@ -11,8 +11,6 @@ class Scrap < ActiveRecord::Base
                :thumb => "100x100#",
                :list => "230x174#"
              }
-             
-  before_save :gather_text
 
   attr_accessor :scrap_type
   attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
@@ -20,24 +18,6 @@ class Scrap < ActiveRecord::Base
   scope :with_reactions, select("scraps.*").joins("INNER JOIN reactions on reactions.scrap_id = scraps.id").having("count(reactions.scrap_id) > 0")
   
   before_save :record_creator
-  before_update :record_updater
-  default_scope includes(:reactions)
-  
-  scope :matching, lambda { |fragment| 
-    fragment = "%#{fragment}%"
-    where('scraps.body like :frag OR scraps.name like :frag', :frag => fragment)
-  }
-  
-  scope :tagged_with_all_of, lambda { |tags|
-    placeholders = tags.map{'?'}.join(',')
-    tag_count = tags.size
-    select("scraps.*").joins("INNER JOIN taggings as tt on tt.scrap_id = scraps.id").where(["tt.tag_id in(#{placeholders})"] + tags.map(&:id)).group("scraps.id").having("count(tt.id) = #{tag_count}")
-  }
-  
-  def gather_text
-    texts = [name, body, description] + tags.map(&:name)
-    self.combined_text = texts.join(' ').searchable
-  end
 
   def average_score_for(scale)
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale
@@ -86,11 +66,7 @@ class Scrap < ActiveRecord::Base
 protected
 
   def record_creator
-    self.created_by ||= User.current
-  end
-
-  def record_updater
-    self.updated_by ||= User.current
+    self.user ||= User.current
   end
 
 end
