@@ -50,7 +50,8 @@ jQuery ($) ->
           this.marker && this.marker.hide()
 
         res.click () ->
-          window.location.href = "/scraps/#{@data('id')}"
+          if @data('id')
+            window.location.href = "/scraps/#{@data('id')}"
 
         i = names.length - 1
         res.each () ->
