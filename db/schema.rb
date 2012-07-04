@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20120704090357) do
 
   create_table "reactions", :force => true do |t|
-    t.integer  "created_by_id"
+    t.integer  "user_id"
     t.integer  "scrap_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "scales", :force => true do |t|
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20120704090357) do
     t.integer  "image_version"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.integer  "created_by_id"
+    t.integer  "user_id"
     t.integer  "updated_by_id"
     t.text     "description"
     t.string   "combined_text"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120704090357) do
     t.integer  "scrap_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "tags", :force => true do |t|

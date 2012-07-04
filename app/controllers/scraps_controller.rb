@@ -14,7 +14,7 @@ class ScrapsController < ApplicationController
   end
 
   def show
-    @reaction = current_user.reaction_to(@scrap)
+    @reaction = current_user.reaction_to(@scrap).first()
     respond_with(@scrap)
   end
 
@@ -24,6 +24,15 @@ class ScrapsController < ApplicationController
 
   def update
     respond_with(@scrap)
+  end
+
+  def create
+    respond_with(@scrap)
+  end
+  
+  def chart
+    @reactions = @scrap.reactions
+    respond_with(@reactions)
   end
 
 protected
@@ -73,6 +82,11 @@ protected
   end
   
   def update_scrap
+    if params[:scrap][:scrap_type] == 'image'
+      params[:scrap][:body] = ""
+    else
+      params[:scrap][:image_upload_id] = nil
+    end
     @scrap.update_attributes(params[:scrap])
   end
 

@@ -9,6 +9,7 @@ Scrapbook::Application.routes.draw do
 
   resources :scraps do
     resources :uploads
+    resources :reactions
     get :chart, :on => :member, :as => "chart"
   end
   

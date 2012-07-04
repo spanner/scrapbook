@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :reactions, :foreign_key => "created_by_id"
-  # has_many :scores, :through => :reactions
+  has_many :scraps
+  has_many :reactions
+  has_many :scores, :through => :reactions
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname

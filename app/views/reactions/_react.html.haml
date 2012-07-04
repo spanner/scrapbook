@@ -1,18 +1,42 @@
 - scrap ||= @scrap
 
 - if @reaction
-  #reactions.minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
+  .minichart{:rel => "#{chart_scrap_url(@scrap)}.json"}
     %canvas#axis
-
+  .summary
+    %h4
+      Your reaction
+    %p
+      Us
+      %strong
+        = @reaction.score_for('usness')
+      %br
+      Like: 
+      %strong
+        = @reaction.score_for('affection')
+    %h4
+      Average reaction
+    %p
+      Us
+      %strong
+        = scrap.average_score_for('usness')
+      %br
+      Like: 
+      %strong
+        = scrap.average_score_for('affection')
+        
 - else
+
   - reaction = current_user.reactions.build(:scrap => @scrap)
-  = form_for reaction do |f|
+  = form_for [@scrap, reaction], :id => "new_reaction" do |f|
+
     - Scale.all.each do |scale|
       - score = reaction.scores.build(:scale => scale)
       = f.fields_for :scores, score do |sf|
+        = sf.hidden_field :scale_id
         %p.slider
           = sf.label :value, scale.min_label
-          = sf.range_field :value, :class => "slider", :"data-values" => ""
+          = sf.range_field :value, :class => "slider", :"data-values" => "", :default => 0
           = sf.label :value, scale.max_label
     .controls.small
       %p

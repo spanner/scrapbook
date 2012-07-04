@@ -300,6 +300,58 @@ jQuery ($) ->
       $.size_to_fit.apply(@)
 
 
+  $.fn.slider = () ->
+    @each () ->
+      input = $(@)
+      console.log 'slider', input
+      values = input.attr('data-values').split(/,\s*/)
+      slider = $('<div class="sliderbar" />')
+      caption = $('<span class="response" />').text(values[2])
+      $(@).hide().after(slider)
+      slider.after(caption)
+      slider.noUiSlider "init",
+        dontActivate: "lower"
+        bar: "off"
+        startMin: 0
+        startMax: 50
+        tracker: () ->
+          value = slider.noUiSlider("getValue")[0]
+          adjusted = (value - 50)/5
+          console.log "setting", input, "to", adjusted
+          input.val(adjusted)
+
+
+  $.fn.reactor = ->
+    @submit (e) ->
+      e.preventDefault() if e
+      form = $(@)
+      form.addClass "waiting"
+      form.find("input[type='submit']").attr("disabled", true)
+      $.ajax
+        type: "POST"
+        dataType: "html"
+        url: form.attr("action") + ".js"
+        data: form.serialize()
+        success: (response) ->
+          replacement = $(response)
+          form.removeClass "waiting"
+          form.hide()
+          form.after(replacement)
+          $('.minichart').minichart()
+          $('#discussion').show()
+          
+      , "html"
+
+
+  $.fn.search = ->
+    @each ->
+      $(@).parent().on 'ajax:complete', (headers, response, html) ->
+        $('#scraps').children().remove()
+        $('#scraps').append(response.responseText)
+      $(@).keyup () ->
+        $(@).parent().submit()
+
+
 $ -> 
   $('#flashes p:parent').flash()
   $('input.labelled, textarea.labelled').self_label()
@@ -309,3 +361,4 @@ $ ->
   $('.tab').tab()
   $('textarea.body').self_sizes()
   $('.dropbox').uploader()
+  $('#searchform.fast .search').search()
