@@ -11,6 +11,7 @@ en:
         body: "Enter your text here"
   add_scrap: "Add scrap"
   can_still_log_in: 'Your password will not change until you complete this process, <br />so if you have remembered the old one you can still <a href="%{url}">log in</a> as usual.'
+  create_new_user: "Invite someone"
   email_note: "This should be the address at which you received the original invitation."
   footer_info: "The scrapbook is a hasty work of irrational conviction. Please <a href='mailto:will@spanner.org'>write to Will</a> when it breaks."
   forgot_your_password: "Forgot your password?"
@@ -19,6 +20,7 @@ en:
   image_note: "click anywhere in the grey area to choose an image from your files."
   image_note_drop: "Drop a file into this space to upload it, or"
   image_note_ie: "click on the file field below to upload a file"
+  invite: "Invite someone"
   latest: "Latest"
   log_out: "Log out"
   new_password_intro: "Please enter and confirm your new password below."
@@ -28,6 +30,7 @@ en:
   save_changes: "Save changes"
   save_scrap: "Save scrap"
   scrapbook: "Scrapbook"
+  send_invitation: "Send invitation"
   send_reset_instructions: "Send reset instructions"
   set_password: "Set password"
   sign_in: "Sign in"
