@@ -10,7 +10,8 @@ jQuery ($) ->
       context=c.getContext("2d")
       c.height = 800
       c.width = 800
-      context.lineWidth = 2;
+      context.lineWidth = 2
+      context.strokeStyle = '#b3b3b3'
       context.moveTo(0,400.5)
       context.lineTo(800,400.5)
       context.moveTo(400.5,0)
@@ -60,7 +61,8 @@ jQuery ($) ->
       context=c.getContext("2d")
       c.height = 120
       c.width = 120
-      context.lineWidth = 2;
+      context.lineWidth = 1
+      context.strokeStyle = '#b3b3b3'
       context.moveTo(0,60.5)
       context.lineTo(120,60.5)
       context.moveTo(60.5,0)
