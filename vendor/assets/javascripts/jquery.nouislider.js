@@ -248,6 +248,7 @@
 										rebuildMidBar(element);
 									}
 									
+									if ( typeof(options.tracker) == "function" ){ options.tracker.call(this); }
 									if ( typeof(options.clickmove) == "function" ){ options.clickmove.call(this); }
 									if ( typeof(options.change) == "function" ){ options.change.call(this); }
 									

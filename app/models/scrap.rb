@@ -15,7 +15,7 @@ class Scrap < ActiveRecord::Base
   attr_accessor :scrap_type
   attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
   
-  scope :with_reactions, select("scraps.*").joins("INNER JOIN reactions on reactions.scrap_id = scraps.id").having("count(reactions.scrap_id) > 0")
+  scope :with_reactions, select("scraps.*").joins("LEFT OUTER JOIN reactions on reactions.scrap_id = scraps.id").group("scraps.id").having("count(reactions.scrap_id) > 0")
   
   before_save :record_creator
   
