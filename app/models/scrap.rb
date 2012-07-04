@@ -31,7 +31,7 @@ class Scrap < ActiveRecord::Base
     scores.each do |score|
       total += score.value
     end
-    total/scores.count
+    (total/scores.count).round(2)
   end
 
   def as_json(options={})
