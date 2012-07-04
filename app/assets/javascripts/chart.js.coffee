@@ -80,3 +80,7 @@ jQuery ($) ->
         sizes.push 0
         canvas = Raphael('reactions')
         canvas.dotchart(0, 0, 120, 120, xs, ys, sizes, {max: 3, heat: true})
+
+$ ->
+  $('.minichart').minichart()
+  $('.bigchart').chart()
