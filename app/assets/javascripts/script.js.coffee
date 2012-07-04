@@ -3,8 +3,8 @@ $ ->
   $('.minichart').minichart()
   $('.bigchart').chart()
   $('#new_reaction').reactor()
-  $('#scrap_search .search').keyup () ->
-    $(@).parent().parent().submit()
+  $('#searchform.fast .search').keyup () ->
+    $(@).parent().submit()
   
   disqus_shortname = 'scrapbok'
   disqus_category_id = 'scraps'

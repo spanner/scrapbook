@@ -11,6 +11,8 @@ class Scrap < ActiveRecord::Base
                :thumb => "100x100#",
                :list => "230x174#"
              }
+             
+  before_save :gather_text
 
   attr_accessor :scrap_type
   attr_accessible :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type
@@ -21,16 +23,21 @@ class Scrap < ActiveRecord::Base
   before_update :record_updater
   default_scope includes(:reactions)
   
+  scope :matching, lambda { |fragment| 
+    fragment = "%#{fragment}%"
+    where('scraps.body like :frag OR scraps.name like :frag', :frag => fragment)
+  }
+  
   scope :tagged_with_all_of, lambda { |tags|
     placeholders = tags.map{'?'}.join(',')
     tag_count = tags.size
     select("scraps.*").joins("INNER JOIN taggings as tt on tt.scrap_id = scraps.id").where(["tt.tag_id in(#{placeholders})"] + tags.map(&:id)).group("scraps.id").having("count(tt.id) = #{tag_count}")
   }
-
-  scope :name_matching, lambda { |fragment| 
-    fragment = "%#{fragment}%"
-    where('scraps.name like ?', fragment)
-  }
+  
+  def gather_text
+    texts = [name, body, description] + tags.map(&:name)
+    self.combined_text = texts.join(' ').searchable
+  end
 
   def average_score_for(scale)
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale
