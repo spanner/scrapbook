@@ -1,4 +1,4 @@
-class UsersController < ScrapbookController
+class UsersController < ApplicationController
   respond_to :html
   before_filter :authenticate_user!
   before_filter :get_user, :except => [:new, :create]
