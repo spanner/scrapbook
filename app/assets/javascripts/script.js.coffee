@@ -30,7 +30,12 @@ jQuery ($) ->
         form.hide()
         form.after(replacement)
       , "html"
-      
+
+  $.fn.search = ->
+    @each ->
+      $(@).keyup () ->
+        $(@).parent().submit()
+        
   $('form#scrap_search').on 'ajax:complete', (headers, response, html) ->
     $('#scraps').children().remove()
     $('#scraps').append(response.responseText)
@@ -41,8 +46,9 @@ $ ->
   $('.minichart').minichart()
   $('.bigchart').chart()
   $('#new_reaction').reactor()
-  $('#searchform.fast .search').keyup () ->
-    $(@).parent().submit()
+  $('#searchform.fast .search').search()
+  
+  
   
   disqus_shortname = 'scrapbok'
   disqus_category_id = 'scraps'

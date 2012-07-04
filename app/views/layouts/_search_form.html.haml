@@ -7,5 +7,5 @@
   #searchform.slow
     %form{:action => scraps_url, :id => 'scrap_search'}
       = form_tag do
-        = text_field_tag(:tag, params[:tag], :placeholder => "search", :tag => 'tag', :class => 'search')
+        = text_field_tag(:tag, params[:tag], :placeholder => "search", :tag => 'tag', :class => 'search', :type => 'search')
   
