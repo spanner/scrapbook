@@ -43,11 +43,6 @@ jQuery ($) ->
         names.push null
         ids.push null
         canvas = Raphael('reactions')
-        console.log xs
-        console.log ys
-        console.log sizes
-        console.log names
-        console.log ids
         res = canvas.dotchart(0, 0, 800, 800, xs, ys, sizes, {max: 10, heat: true}).hover () ->
           this.marker = this.marker || canvas.tag(this.x, this.y, "#{@data('id')}: #{@data('caption')}", 0, this.r + 2).insertBefore(this)
           this.marker.show()
