@@ -81,7 +81,6 @@ jQuery ($) ->
           xhr.setRequestHeader('X-PJAX', 'true')
         )
         .on('ajax:error', (event, xhr, status) ->
-          console.log "failed", xhr
           self.removeClass('waiting').addClass('erratic')
         )
         .on('ajax:success', (event, response, status) ->
