@@ -342,6 +342,63 @@ jQuery ($) ->
           
       , "html"
 
+
+
+
+
+  History = window.History
+
+  class Searchform
+    constructor: (element, @options) ->
+      @form = $(element)
+      @prompt = @form.find("input[type=\"search\"]")
+      @request = null
+      @original_content = $(options.replacing).clone()
+      @form.submit @submit
+      History.Adapter.bind window, "statechange", @revert if @options.historical
+
+    submit: (e) =>
+      e.preventDefault()  if e
+      $(@options.replacing).fadeTo "fast", 0.2
+      @request.abort() if @request
+      @request = $.ajax
+        type: "GET"
+        dataType: "html"
+        url: @form.attr("action") + ".js"
+        data: @form.serialize()
+        success: @update
+
+    update: (results) =>
+      if results?
+        @display results
+        qs = @form.serialize()
+        url = @form.attr("action") + "?" + qs
+        if @options.historical
+          History.pushState
+            results: results
+          , "Scraps matching " + query, url
+
+    display: (results) =>
+      $(@options.replacing).replaceWith results
+
+    revert: =>
+      state = History.getState()
+      if state.data?.results?
+        @display state.data.results
+      else
+        @display @original_content
+      
+
+  $.fn.searchform = (options) ->
+    options = $.extend(
+      replacing: "#scraps"
+      historical: true
+    , options)
+    @each ->
+      new Searchform @, options
+    @
+
+
 $ -> 
   $('#flashes p:parent').flash()
   $('input.labelled, textarea.labelled').self_label()

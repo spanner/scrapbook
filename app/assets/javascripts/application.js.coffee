@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require lib/extensions
 #= require jquery.nouislider
+#= require jquery.history
 #= require modernizr
 #= require uploader
 #= require sweet-justice
