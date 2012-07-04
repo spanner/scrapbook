@@ -7,7 +7,7 @@ set :group, 'spanner'
 set :rvm_type, :system 
 set :rvm_ruby_string, '1.9.3'
 
-set :application, "rspca"
+set :application, "scrapbook"
 set :repository,  "git@github.com:spanner/scrapbook.git"
 set :deploy_to, "/var/www/scrapbook"
 set :rails_env, "production"
