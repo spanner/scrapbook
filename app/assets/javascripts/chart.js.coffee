@@ -42,6 +42,11 @@ jQuery ($) ->
         names.push null
         ids.push null
         canvas = Raphael('reactions')
+        console.log xs
+        console.log ys
+        console.log sizes
+        console.log names
+        console.log ids
         res = canvas.dotchart(0, 0, 800, 800, xs, ys, sizes, {max: 10, heat: true}).hover () ->
           this.marker = this.marker || canvas.tag(this.x, this.y, "#{@data('id')}: #{@data('caption')}", 0, this.r + 2).insertBefore(this)
           this.marker.show()
@@ -53,6 +58,7 @@ jQuery ($) ->
           @data('caption', names[i]) if name?
           @data('id', ids[i]) if name?
           i--
+        console.log $('svg circle')
           
   $.fn.minichart = () ->
     @each () ->
@@ -82,9 +88,10 @@ jQuery ($) ->
         xs.push -10
         ys.push -10
         sizes.push 0
-        canvas = Raphael('reactions')
+        canvas = Raphael('reaction')
         canvas.dotchart(0, 0, 120, 120, xs, ys, sizes, {max: 4, heat: true})
 
 $ ->
   $('.minichart').minichart()
   $('.bigchart').chart()
+  
