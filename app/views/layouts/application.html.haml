@@ -45,7 +45,7 @@
     %p.notice= notice
     %p.alert= alert
 
-  - if @scrap
+  - if @scrap && @scrap.persisted?
     = javascript_include_tag "http://scrapbok.disqus.com/embed.js"
 
   :javascript
