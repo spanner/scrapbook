@@ -44,7 +44,7 @@ jQuery ($) ->
         sizes.push 0
         names.push null
         ids.push null
-        canvas = Raphael('reactions')
+        canvas = Raphael('reactions', width, height)
         res = canvas.dotchart(0, 0, width, height, xs, ys, sizes, {max: 10, heat: true}).hover () ->
           # tanA = (this.y-height/2)/(width/2-this.x)
           # if this.x > width/2
@@ -100,7 +100,7 @@ jQuery ($) ->
         xs.push -10
         ys.push -10
         sizes.push 0
-        canvas = Raphael('reaction')
+        canvas = Raphael('reaction', 120, 120)
         canvas.dotchart(0, 0, 120, 120, xs, ys, sizes, {max: 4, heat: true})
 
 $ ->
