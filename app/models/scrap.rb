@@ -55,7 +55,7 @@ class Scrap < ActiveRecord::Base
       :name => name,
       :id => id
     }
-    scores.each do |score|
+    scores.compact.each do |score|
       unless json[score.scale.name]
         json[score.scale.name] = score.value/count
       else
