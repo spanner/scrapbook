@@ -9,5 +9,9 @@ protected
   def notice_user
     User.current = current_user
   end
+  
+  def require_active_user
+    render :text => "Not Allowed!", :status => :forbidden if current_user.passive_observer?
+  end
 
 end

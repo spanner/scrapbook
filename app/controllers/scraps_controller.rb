@@ -1,7 +1,8 @@
-class ScrapsController < ApplicationController
+class ScrapsController < ScrapbookController
   respond_to :html, :js, :json
   
   before_filter :authenticate_user!
+  before_filter :require_active_user, :except => [:index, :show]
   before_filter :find_scraps, :only => [:index]
   before_filter :get_scrap, :only => [:show, :edit, :update, :destroy, :chart]
   before_filter :build_scrap, :only => [:new, :create]

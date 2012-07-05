@@ -14,9 +14,6 @@
       = f.label :email
       %br
       = f.text_field :email, :class => 'preferences', :autocomplete => false
-      %br
-      %span.formnote
-        = t :administrative_email_is_private
 
     - unless @user.new_record?
       %p
@@ -33,8 +30,11 @@
         = f.password_field :password_confirmation, :class => 'preferences'
     - else
       %p
-        = f.label :observer
         = f.check_box :observer
+        = f.label :observer
+        %br
+        %span.formnote
+          = t :observer_note
         
 
     .controls

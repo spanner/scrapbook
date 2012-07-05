@@ -1,6 +1,7 @@
 class ReactionsController < ScrapbookController
   respond_to :html, :js, :json
   
+  before_filter :require_active_user, :only => [:new, :create]
   before_filter :get_all_reactions, :only => [:index]
   before_filter :build_reaction, :only => [:new, :create]
   before_filter :set_reaction, :only => [:update, :create]

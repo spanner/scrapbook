@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   def reaction_to(scrap)
     reactions.to_scrap(scrap)
   end
+  
+  def passive_observer?
+    observer? && !admin?
+  end
 
   # Current user is pushed into here to make it available in models,
   # most pertinently the UserActionObserver that sets ownership before save.

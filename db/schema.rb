@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(:version => 20120705091956) do
   create_table "reactions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "scrap_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "updated_by_id"
   end
 
   create_table "scales", :force => true do |t|

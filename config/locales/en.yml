@@ -10,6 +10,8 @@ en:
         description: "Description (optional)"
         body: "Enter your text here"
         user_id: "Assign to user"
+      user:
+        observer: "Invite as observer"
   add_scrap: "Add scrap"
   can_still_log_in: 'Your password will not change until you complete this process, <br />so if you have remembered the old one you can still <a href="%{url}">log in</a> as usual.'
   create_new_user: "Invite someone"
@@ -25,6 +27,7 @@ en:
   latest: "Latest"
   log_out: "Log out"
   new_password_intro: "Please enter and confirm your new password below."
+  observer_note: "Observers can see all reactions and take part in discussion, but they can't add scraps or reactions."
   overview: "Overview"
   password_requirements: "Your password must have at least six characters including one uppercase, one lowercase and one numeral."
   preferences: "Preferences"
