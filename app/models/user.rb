@@ -49,7 +49,11 @@ class User < ActiveRecord::Base
   def self.current=(user)
     Thread.current[:user] = user
   end
-  
+
+  def self.for_selection
+    self.all.map{|u| [u.name, u.id] }
+  end
+
 protected
 
   def send_invitation

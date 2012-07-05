@@ -9,6 +9,7 @@ en:
         name: "Scrap title"
         description: "Description (optional)"
         body: "Enter your text here"
+        user_id: "Assign to user"
   add_scrap: "Add scrap"
   can_still_log_in: 'Your password will not change until you complete this process, <br />so if you have remembered the old one you can still <a href="%{url}">log in</a> as usual.'
   create_new_user: "Invite someone"
