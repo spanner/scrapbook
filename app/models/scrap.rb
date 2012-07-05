@@ -30,7 +30,9 @@ class Scrap < ActiveRecord::Base
     scores = self.scores.on_scale(scale)
     total = 0
     scores.each do |score|
-      total += score.value
+      if score.value !nil 
+        total += score.value
+      end
     end
     (total/scores.count).round(2)
   end
