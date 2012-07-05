@@ -22,7 +22,8 @@ role :app, "bluebottle.spanner.org"
 role :db,  "bluebottle.spanner.org"
 
 # if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+set :keep_releases, 2
+after "deploy:restart", "deploy:cleanup"
 
 namespace :deploy do
   task :start do ; end
