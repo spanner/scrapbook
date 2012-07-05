@@ -42,6 +42,12 @@
       %p
         = f.text_area :description, :rel => Scrap.human_attribute_name("description"), :class => 'labelled description'
 
+      - if @scrap.persisted? && current_user.admin?
+        %p
+          = f.label :user_id
+          %br
+          = f.select :user_id, User.for_selection
+      
     .controls
       %p
         = f.submit t :save_scrap

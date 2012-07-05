@@ -40,14 +40,14 @@
     #colophon
       = t(:footer_info).html_safe
 
-
+  #discussion
+    #disqus_thread
 
   #flashes
     %p.notice= notice
     %p.alert= alert
 
-  - if @scrap && @scrap.persisted?
-    = javascript_include_tag "http://scrapbok.disqus.com/embed.js"
+  = javascript_include_tag "http://scrapbok.disqus.com/embed.js"
 
   :javascript
     var _gaq=[['_setAccount','UA-15051397-11'],['_trackPageview']];
