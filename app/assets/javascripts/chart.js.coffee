@@ -8,14 +8,16 @@ jQuery ($) ->
     @each () ->
       c = document.getElementById("axis")
       context=c.getContext("2d")
-      c.height = 800
-      c.width = 800
+      width = 800
+      height = 800
+      c.height = height
+      c.width = width
       context.lineWidth = 1
       context.strokeStyle = '#b3b3b3'
-      context.moveTo(0,400.5)
-      context.lineTo(800,400.5)
-      context.moveTo(400.5,0)
-      context.lineTo(400.5,800)
+      context.moveTo(0, height/2 + 0.5)
+      context.lineTo(width, height/2 + 0.5)
+      context.moveTo(width/2 + 0.5, 0)
+      context.lineTo(width/2 + 0.5, height)
       context.stroke()
       element = $(@)
       url = element.attr('rel')
@@ -43,8 +45,17 @@ jQuery ($) ->
         names.push null
         ids.push null
         canvas = Raphael('reactions')
-        res = canvas.dotchart(0, 0, 800, 800, xs, ys, sizes, {max: 10, heat: true}).hover () ->
-          this.marker = this.marker || canvas.tag(this.x, this.y, "#{@data('id')}: #{@data('caption')}", 0, this.r + 2).insertBefore(this)
+        res = canvas.dotchart(0, 0, width, height, xs, ys, sizes, {max: 10, heat: true}).hover () ->
+          # tanA = (this.y-height/2)/(width/2-this.x)
+          # if this.x > width/2
+          #   angle = 180 + Math.atan(tanA)/Math.PI*180
+          # else
+          #   angle = Math.atan(tanA)/Math.PI*180
+          if this.x > width/2
+            angle = 180
+          else
+            angle = 0
+          this.marker = this.marker || canvas.tag(this.x, this.y, @data('caption'), angle, this.r + 2).insertBefore(this)
           this.marker.show()
         ,() ->
           this.marker && this.marker.hide()

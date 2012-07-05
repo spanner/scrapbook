@@ -29,10 +29,23 @@ class Scrap < ActiveRecord::Base
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale
     scores = self.scores.on_scale(scale)
     total = 0
-    scores.each do |score|
-      total += score.value
+    unless scores.empty?
+      count = scores.count
+      scores.each do |score|
+        unless score.value == nil 
+          total += score.value
+        else
+          count -= 1
+        end
+      end
+      unless count == 0
+        (total/count).round(3)
+      else
+        "none yet"
+      end
+    else
+      "none yet"
     end
-    (total/scores.count).round(2)
   end
 
   def as_json(options={})
