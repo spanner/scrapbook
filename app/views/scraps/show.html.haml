@@ -26,5 +26,7 @@
           = t :uploaded_by
           = @scrap.user.forename
 
-  #discussion
-    #disqus_thread
+  - if current_user.observer? or @reaction
+    #discussion
+      #disqus_thread
+      = javascript_include_tag "http://scrapbok.disqus.com/embed.js"

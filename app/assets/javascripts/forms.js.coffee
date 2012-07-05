@@ -333,17 +333,10 @@ jQuery ($) ->
           form.removeClass "waiting"
           form.hide()
           form.after(replacement)
-          $('#discussion').show()
           $('.minichart').minichart()
+          $('#scrap').append("<div id='discussion'><div id='disqus_thread'></div></div> <script type='text/javascript'> var disqus_shortname = 'scrapbok'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); </script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus.</a></noscript><a href='http://disqus.com' class='dsq-brlink'>comments powered by <span class='logo-disqus'>Disqus</span></a>")
+        , "html"
           
-      , "html"
-
-  $.fn.show_discussion = () ->
-    $('#discussion').show() if @.length
-
-
-
-
   History = window.History
 
   class Searchform
@@ -411,5 +404,3 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider()
   $('#new_reaction').reactor()
-  $('#reacted').show_discussion()
-  
