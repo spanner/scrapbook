@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    sign_in(@user, :bypass => true) if @user == current_user
     respond_with @user, :location => root_url
   end
 
