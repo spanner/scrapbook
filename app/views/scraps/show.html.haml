@@ -1,3 +1,5 @@
+- visible = true if current_user.observer? || @reaction
+
 #scrap{:class => @scrap.type}
   #body
     - if @scrap.image?
@@ -15,7 +17,8 @@
   #caption
     #reaction
       = render :partial => 'reactions/react', :@scrap => @scrap
-    #metadata
+
+    #metadata{:class => visible ? "" : "hide_until_reaction"}
       %h2
         = @scrap.name
       - if @scrap.description?
@@ -26,7 +29,7 @@
           = t :uploaded_by
           = @scrap.user.forename
 
-  - if current_user.observer? or @reaction
+  - if visible
     #discussion
       #disqus_thread
       = javascript_include_tag "http://scrapbok.disqus.com/embed.js"
