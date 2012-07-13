@@ -9,7 +9,8 @@ class Scrap < ActiveRecord::Base
              :styles => {
                :icon => "48x48#",
                :thumb => "100x100#",
-               :list => "230x174#"
+               :list => "230x174#",
+               :precrop => "1600x1200^"
              }
 
   attr_accessor :scrap_type

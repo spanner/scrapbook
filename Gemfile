@@ -14,7 +14,7 @@ gem 'devise-encryptable'
 # Paperclip handles all our asset attachments. `cropped_paperclip` extends it greatly to 
 # give us a generalised asset-upload interface.
 gem "paperclip", "~> 3.0"
-gem "cropped_paperclip", :git => "git://github.com/spanner/cropper.git"
+gem "cropped_paperclip", :path => "/var/www/gems/cropped_paperclip"#:git => "git://github.com/spanner/cropper.git"
 
 # youtube_it will add some API integration to make adding a video more pleasant.
 #gem "youtube_it"
