@@ -1,5 +1,6 @@
-PATH
-  remote: /var/www/gems/cropped_paperclip
+GIT
+  remote: git://github.com/spanner/cropper.git
+  revision: 0d76ce21a2379d4533979f73789e723c439a4703
   specs:
     cropped_paperclip (0.0.1)
       paperclip (~> 3.0.4)

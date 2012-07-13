@@ -405,3 +405,5 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider()
   $('#new_reaction').reactor()
+  $('.droppable').show() if !!window.FileReader && Modernizr.draganddrop
+  
