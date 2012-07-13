@@ -5,6 +5,7 @@ class ScrapsController < ScrapbookController
   before_filter :require_active_user, :except => [:index, :show]
   before_filter :find_scraps, :only => [:index]
   before_filter :get_scrap, :only => [:show, :edit, :update, :destroy, :chart]
+  before_filter :require_permission, :only => [:edit, :update, :destroy]
   before_filter :build_scrap, :only => [:new, :create]
   before_filter :update_scrap, :only => [:create, :update]
 
@@ -35,8 +36,18 @@ class ScrapsController < ScrapbookController
     @reactions = @scrap.reactions
     respond_with(@reactions)
   end
+  
+  def destroy
+    @scrap.destroy
+    flash[:notice] = t(:scrap_destroyed, :name => @scrap.name)
+    redirect_to scraps_url
+  end
 
 protected
+
+  def require_permission
+    render :text => "That's not yours!", :status => :forbidden unless current_user.can_edit?(@scrap)
+  end
 
   def find_scraps
     sorts = {

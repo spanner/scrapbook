@@ -258,7 +258,9 @@ jQuery ($) ->
       @showing = @element.hasClass('here')
       @element.click @show
       tabs[@name] = @
-      @show() if @showing
+      @hide()
+      if $('input.tabbed').val() == @name
+        @show() 
 
     show: (e) =>
       e.preventDefault() if e
@@ -271,6 +273,7 @@ jQuery ($) ->
       e.preventDefault() if e
       $(@selector).hide()
       @element.removeClass('here')
+
     @hide: ->
       tab.hide() for key, tab of tabs
 
@@ -402,8 +405,9 @@ $ ->
   $('.tab').tab()
   $('textarea.body').self_sizes()
   $('.dropbox').uploader()
+  $('a.recrop').recropper()
+  $('.droppable').show() if !!window.FileReader && Modernizr.draganddrop
   $('#searchform.fast form').searchform()
   $("input.slider").slider()
   $('#new_reaction').reactor()
-  $('.droppable').show() if !!window.FileReader && Modernizr.draganddrop
   

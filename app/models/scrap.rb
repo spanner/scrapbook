@@ -66,10 +66,17 @@ class Scrap < ActiveRecord::Base
     json
   end
   
+  # This will get more complicated
   def type
-    if image?
+    if new_record? || image?
       'image'
-    elsif body.length < 48
+    else
+      'text'
+    end
+  end
+  
+  def length
+    if body.length < 48
       'word'
     elsif body.length < 320
       'phrase'

@@ -4,10 +4,10 @@
       .dropbox{:rel => uploads_path(:format => :js)}
         .img
           - if @scrap.image_upload
-            = link_to image_tag(@scrap.image.url(:cropped)), edit_upload_url(@scrap.image_upload), :class => 'recrop'
+            = link_to image_tag(@scrap.image.url(:cropped)), edit_upload_url(@scrap.image_upload, :scrap_id => @scrap.id), :class => 'recrop'
           - else 
             .nonie
-              = link_to image_tag(@scrap.image.url(:cropped)), new_upload_url(:person_id => @scrap.id), :class => 'picker'
+              = link_to image_tag(@scrap.image.url(:cropped)), new_upload_url(:scrap_id => @scrap.id), :class => 'picker'
             .ie
               = image_tag(@scrap.image.url(:cropped))
         - unless @scrap.image?
@@ -21,6 +21,10 @@
 
         %h2.waiter
           = t :please_wait
+
+        .controls
+          .cancel
+            = link_to t(:cancel), '#'
             
         %p.file
           = file_field_tag :image_uploader, :class => 'file', :id => 'file_upload', :accept => "image"
@@ -37,7 +41,7 @@
       = link_to t(:video), '#video', :class => 'unavailable', :'data-reveal' => '.video'
       = link_to t(:text), '#text', :class => 'tab', :'data-reveal' => '.text'
       = link_to t(:image), '#image', :class => 'tab here', :'data-reveal' => '.image'
-      = f.hidden_field :scrap_type, :class => 'tabbed'
+      = f.hidden_field :scrap_type, :class => 'tabbed', :value => @scrap.type
   
     #metadata
       %h2

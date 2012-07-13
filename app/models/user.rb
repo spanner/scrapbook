@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   def passive_observer?
     observer? && !admin?
   end
+  
+  def can_edit?(scrap)
+    admin? || scrap.user == self
+  end
 
   # Current user is pushed into here to make it available in models,
   # most pertinently the UserActionObserver that sets ownership before save.
