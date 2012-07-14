@@ -91,6 +91,7 @@ jQuery () ->
     constructor: (data, @forum) ->
       @id = data.id
       @name = data.name
+      @name "this nameless scrap" if @name is ""
       @url = "http://scrapbook.spanner.org/scraps/" + @id
       
   class Thread
