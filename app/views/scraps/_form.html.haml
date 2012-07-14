@@ -49,7 +49,7 @@
       %p
         = f.text_area :description, :rel => Scrap.human_attribute_name("description"), :class => 'labelled description'
 
-      - if @scrap.persisted? && current_user.admin?
+      - if current_user.admin?
         %p
           = f.label :user_id
           %br
