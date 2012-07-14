@@ -1,8 +1,8 @@
-.scrap{:class => scrap.length}
+.scrap{:class => scrap.wordiness}
   - if scrap.image?
     = image_tag(scrap.image.url(:list))
   - else
-    - if scrap.length == 'text' || scrap.length == 'paragraph'
+    - if scrap.wordiness == 'text' || scrap.wordiness == 'paragraph'
       %p.sweet-justice{:style => "font-size: #{"%.2f" % scrap.text_size}em"}
         = strip_tags(scrap.body)
     - else

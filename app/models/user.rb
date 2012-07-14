@@ -61,6 +61,13 @@ class User < ActiveRecord::Base
   def self.for_selection
     self.all.map{|u| [u.name, u.id] }
   end
+  
+  def as_json(options={})
+    {
+      :name => name,
+      :email => email
+    }
+  end
 
 protected
 

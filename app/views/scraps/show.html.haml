@@ -7,7 +7,7 @@
         = image_tag @scrap.image.url(:cropped)
     
     - elsif @scrap.body?
-      - if @scrap.length == 'text' || @scrap.length == 'paragraph'
+      - if @scrap.wordiness == 'text' || @scrap.wordiness == 'paragraph'
         %div.text.sweet-justice{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
           = simple_format(@scrap.body)
       - else

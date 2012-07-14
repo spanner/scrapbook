@@ -14,6 +14,10 @@ class ScrapsController < ScrapbookController
       format.js { render :partial => 'scrap_list' }
     end
   end
+  
+  def discussion
+    render
+  end
 
   def show
     @reaction = current_user.reaction_to(@scrap).first()

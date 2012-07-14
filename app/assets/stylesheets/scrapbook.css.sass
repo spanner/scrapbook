@@ -33,6 +33,15 @@ h1.pagetitle
   +heading
   +caps
 
+h2.waiting
+  margin: 40px 0
+  padding-left: 24px
+  color: $mid
+  background:
+    position: 4px 6px
+    repeat: no-repeat
+    image: image-url('spinner.gif')
+
 .nonie
   display: block
 .ie
@@ -103,6 +112,7 @@ p.formnote
     margin: 5px 5px 0 0
     float: left
     margin: 5px
+    margin-right: 60px
     input
       width: 160px
       background-color: $light
@@ -151,6 +161,10 @@ p.formnote
       background-position: 0 -320px
       &:hover
         background-position: 0 -352px
+    &.discussion
+      background-position: 0 -384px
+      &:hover
+        background-position: 0 -416px
 
   
 #container
@@ -363,7 +377,21 @@ p.formnote
       .xmax
         top: 410px
         right: 0
-      
+    #latest_posts
+      min-height: 600px
+      .post
+        h4.poster
+          +light
+          font-size: 1.8em
+          color: $mid
+          margin-bottom: 5px
+          span.post_scrap
+            margin-left: 0.5em
+            +bold
+            font-size: 0.5em
+        .message
+          p
+            margin-top: 0
     
   #account
     width: 800px

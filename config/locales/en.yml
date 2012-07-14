@@ -17,6 +17,7 @@ en:
   can_still_log_in: 'Your password will not change until you complete this process, <br />so if you have remembered the old one you can still <a href="%{url}">log in</a> as usual.'
   confirm_delete_scrap: "Are you sure you want to delete the scrap '%{name}'? Its reactions will also be lost, but linked comments will survive."
   create_new_user: "Invite someone"
+  collected_discussion: "Collected discussion"
   email_note: "This should be the address at which you received the original invitation."
   footer_info: "The scrapbook is a hasty work of irrational conviction. Please <a href='mailto:will@spanner.org'>write to Will</a> when it breaks."
   forgot_your_password: "Forgot your password?"
@@ -28,6 +29,7 @@ en:
   invite: "Invite someone"
   latest: "Latest"
   log_out: "Log out"
+  messages_loading: "1. Loading scraps"
   new_password_intro: "Please enter and confirm your new password below."
   observer_note: "Observers can see all reactions and take part in discussion, but they can't add scraps or reactions."
   overview: "Overview"

@@ -75,7 +75,7 @@ class Scrap < ActiveRecord::Base
     end
   end
   
-  def length
+  def wordiness
     if body.length < 48
       'word'
     elsif body.length < 320
@@ -93,6 +93,19 @@ class Scrap < ActiveRecord::Base
     else
       1
     end
+  end
+  
+  def as_json(options={})
+    {
+      :id => id,
+      :name => name,
+      :type => type,
+      :wordiness => wordiness,
+      :text => body,
+      :thumb => image.url(:thumb),
+      :image => image.url(:cropped),
+      :user => user.as_json(options),
+    }
   end
 
 protected
