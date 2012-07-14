@@ -31,7 +31,7 @@ jQuery () ->
         error: @fail
       
     getScraps: () =>
-      $.getJSON "/scraps.json", @storeScraps
+      $.getJSON "/scraps.json?show=all", @storeScraps
         
     storeScraps: (response) =>
       for scrapdata in response
