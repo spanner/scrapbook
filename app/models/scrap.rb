@@ -80,7 +80,6 @@ class Scrap < ActiveRecord::Base
   
   def as_json(options={})
     count = reactions.count
-    count = reactions.count
     json = {
       :id => id,
       :name => name,
@@ -94,7 +93,7 @@ class Scrap < ActiveRecord::Base
     }
     scores.compact.each do |score|
       json[score.scale.name] ||= 0
-      json[score.scale.name] += score.value/count
+      json[score.scale.name] += score.value/count if score.value
     end
     json
   end
