@@ -51,7 +51,7 @@
         = sf.hidden_field :scale_id
         %p.slider
           = sf.label :value, scale.min_label
-          = sf.range_field :value, :class => "slider", :"data-values" => "", :default => 0
+          = sf.range_field :value, :class => "slider", :"data-values" => "", :default => 0, :max => 10, :min => -10
           = sf.label :value, scale.max_label
     .controls.small
       %p
