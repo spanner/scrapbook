@@ -34,6 +34,7 @@
       #footer.navigation
         %p
           = t :signed_in_as, :name => current_user.name
+          = link_to t(:scrap_help), help_scraps_url, :class => 'help'
           = link_to t(:invite), new_user_url, :class => 'invite'
           = link_to t(:preferences), edit_user_url(current_user), :class => 'preferences'
           = link_to t(:log_out), destroy_user_session_path, :class => 'logout', :method => :delete

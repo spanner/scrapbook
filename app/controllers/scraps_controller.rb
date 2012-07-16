@@ -19,6 +19,10 @@ class ScrapsController < ScrapbookController
     render
   end
 
+  def help
+    render
+  end
+
   def show
     @reaction = current_user.reaction_to(@scrap).first()
     respond_with(@scrap)
