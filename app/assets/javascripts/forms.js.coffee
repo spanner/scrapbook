@@ -417,5 +417,4 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider() unless Modernizr.touch
   $('#new_reaction').reactor()
-  $('.scrap_link').fixStack()
   

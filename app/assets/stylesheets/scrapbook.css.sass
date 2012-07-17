@@ -316,6 +316,12 @@ p.formnote
           
     #scraps
       margin-top: 10px
+      a.scrap_link
+        color: $dark
+        +opacity(0.9)
+        &:hover
+          color: $hover
+          +opacity(1)
       .scrap
         position: relative
         display: block
@@ -326,18 +332,9 @@ p.formnote
         height: 174px
         margin-right: 10px
         margin-bottom: 10px
-        z-index: 50
         
         p
           margin: 10px
-        a.scrap_link
-          display: block
-          position: absolute
-          top: 0
-          left: 0
-          width: 100%
-          height: 100%
-          z-index: 100
           
         &.image
           padding: 0
