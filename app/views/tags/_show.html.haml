@@ -1,0 +1,10 @@
+- scrap ||= @scrap
+
+#tags
+  - if scrap.tags.any?
+    %h4
+      = t(:tagged_with)
+    %ul
+      - scrap.tags.each do |tag|
+        %li.tag
+          = link_to tag.name, scraps_path(:tag => tag.name), :class => 'tag'

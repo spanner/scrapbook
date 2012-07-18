@@ -1,0 +1,6 @@
+%li.newtag.remove
+  = fields_for :scrap, @scrap do |sf|
+    = sf.fields_for :taggings, Tagging.new(:tag => @tag), :child_index => @tag.id do |tf|
+      = link_to @tag.name, '#', :class => 'detag'
+      = tf.hidden_field :tag_id
+      = tf.hidden_field :user_id, :value => current_user.id

@@ -1,0 +1,16 @@
+- content_for :pagetitle do
+  = t :manage_tags
+
+#pagetitle
+  %h1
+    = ""
+    %span.addendum
+      = t :manage_tags
+      
+
+#admin.tags
+  %p
+    = t :tag_cloud_admin_instructions
+  %ul
+    = render :partial => 'tag'
+
