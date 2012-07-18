@@ -54,9 +54,24 @@
           = f.label :user_id
           %br
           = f.select :user_id, User.for_selection
-    #tags
-      = render 'tags/edit'
-      
     .controls
       %p
         = f.submit t :save_scrap
+
+    #tags
+      %ul.tagger
+        - @scrap.tags.each do |tag|
+          %li.remove
+            = f.fields_for :tags, tag, :child_index => tag.id do |tf|
+              = link_to tag.name, '#', :class => 'detag'
+              = tf.hidden_field :_destroy, :class => 'destroy'
+
+        %li.add{:rel => new_tagging_url(:scrap_id => @scrap.id)}
+          %span.newtag
+            = f.fields_for :tags, @scrap.tags.build do |tf|
+              = tf.text_field :name, :rel => "add tag", :class => 'labelled', :autocomplete => 'off'
+              = link_to '&nbsp;'.html_safe, '#', :class => 'tag add_tag'
+        
+      %p.note
+        = t :form_tags_note
+    

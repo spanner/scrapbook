@@ -57,7 +57,31 @@ h2.waiting
 
 .droppable
   display: none
-  
+
+a.tag, a.detag
+  padding-left: 16px
+  min-width: 16px
+  color: $tag
+  background:
+    position: 0 4px
+    repeat: no-repeat
+    image: image-url('tag_bullet.png')
+  &:hover
+    color: $hover
+    background-position: 0 -90px
+  &.add_tag
+    background-position: 0 -28px
+    background-image: image-url('minisymbols.png')
+    &:hover
+      background-position: 0 -44px
+      
+
+a.detag
+  &:hover
+    color: $hover
+    background-position: 0 -90px
+    background-image: image-url('detag_bullet.png')
+
 input[type="text"], input[type="password"], input[type="email"], select, textarea
   +light
   color: $input
@@ -265,6 +289,24 @@ p.formnote
             margin: 0 0 0.25em 0
           p
             margin: 0 0 0.25em 0
+        #tags
+          position: relative
+          margin-top: 50px
+          ul.tags, ul.tagger
+            margin: 0
+            padding: 0
+            li
+              display: inline
+              float: left
+              margin-right: 1em
+              list-style: none
+          p
+            clear: left
+        ul.tagger
+          input
+            font-size: 0.75em
+            padding: 2px
+            
         #reaction
           position: relative
           width: 50%
@@ -732,3 +774,48 @@ p.formnote
 
 
 
+ul.suggestions
+  position: absolute
+  overflow: hidden
+  color: $link
+  margin: 0
+  padding: 0
+  background-color: white
+  border: 1px solid $pale
+  border-top: 0
+  z-index: 200
+  +box-shadow
+  li
+    a
+      display: block
+      padding: 8px 8px 8px 25px
+      cursor: hand
+      background:
+        position: 6px 11px
+        repeat: no-repeat
+        scroll: scroll
+      &.tag
+        color: $tag
+        background-image: image-url('tag_bullet.png')
+      &.institution
+        color: $inst
+        background-image: image-url('inst_bullet.png')
+      &.person
+        color: $link
+        background-image: image-url('person_bullet.png')
+      &.hover
+        color: white
+        background-color: $active
+        background-position: 6px -129px
+      &:active
+        color: $active
+        background-color: white
+        background-position: 6px -95px
+  li.waiting
+    height: 50px
+    background:
+      position: center center
+      repeat: no-repeat
+      scroll: scroll
+      image: image-url('pale_spinner.gif')
+       

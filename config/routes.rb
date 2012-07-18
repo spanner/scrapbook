@@ -10,6 +10,7 @@ Scrapbook::Application.routes.draw do
   resources :scraps do
     resources :uploads
     resources :reactions
+    resources :taggings
     get :chart, :on => :member, :as => "chart"
     get :discussion, :on => :collection, :as => "discussion"
     get :help, :on => :collection, :as => "help"

@@ -401,7 +401,33 @@ jQuery ($) ->
         k = e.which
         form.submit()  if (k >= 49 and k <= 122)
     @
-    
+
+  $.fn.replace_with_remote_content = () ->
+    @
+      .on 'ajax:beforeSend', (event, xhr, settings) ->
+        console.log "clicky"
+        $(@).addClass('waiting')
+        xhr.setRequestHeader('X-PJAX', 'true')
+      .on 'ajax:error', (event, xhr, status) ->
+        $(@).removeClass('waiting').addClass('erratic')
+      .on 'ajax:success', (event, response, status) ->
+        if response? && response != " "
+          self = $(@)
+          container = $(@).parents('.holder').first()
+          replacement = $(response)
+          self.removeClass('waiting')
+          replacement.insertAfter(container).activate().hide()
+          if replacement.find('form').length
+            replacement.addClass('editing')
+          else
+            replacement.removeClass('editing')
+          container.hide()
+          replacement.show()
+          replacement.find('a.cancel').click (e) ->
+            e.preventDefault()
+            replacement.remove()
+            container.show()
+
 
 $ -> 
   $('#flashes p:parent').flash()
@@ -417,5 +443,6 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider() unless Modernizr.touch
   $('#new_reaction').reactor()
-  $('ul.tagger').tagger()
   $('a.detag').detagger()
+  $('ul.tagger').tagger()
+  $('a.add_tagger').replace_with_remote_content()

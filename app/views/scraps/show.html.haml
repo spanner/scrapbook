@@ -33,8 +33,14 @@
         %p.note
           = t :uploaded_by
           = @scrap.user.forename
-    #tags
-      = render 'tags/show'
+
+    #tags{:class => visible ? "" : "hide_until_reaction"}
+      %ul.tags
+        - @scrap.tags.each do |tag|
+          %li
+            = link_to tag.name, scraps_path(:tag => tag.name), :class => 'tag'
+      %p
+    
       
       
   - if visible
