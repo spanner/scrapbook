@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
   def passive_observer?
     observer? && !admin?
   end
+  
+  def can_edit?(scrap)
+    admin? || scrap.user == self
+  end
 
   # Current user is pushed into here to make it available in models,
   # most pertinently the UserActionObserver that sets ownership before save.
@@ -58,8 +62,11 @@ class User < ActiveRecord::Base
     self.all.map{|u| [u.name, u.id] }
   end
   
-  def invite
-    send_invitation
+  def as_json(options={})
+    {
+      :name => name,
+      :email => email
+    }
   end
 
 protected

@@ -22,6 +22,11 @@ strong, b
 em, i
   +italic
 
+img
+  border: 0
+  padding: 0
+  margin: 0
+  
 h1, h2
   line-height: 1
   +heading
@@ -33,11 +38,26 @@ h1.pagetitle
   +heading
   +caps
 
+h2.waiting
+  margin: 40px 0
+  padding-left: 24px
+  color: $mid
+  background:
+    position: 4px 6px
+    repeat: no-repeat
+    image: image-url('spinner.gif')
+
 .nonie
   display: block
 .ie
+  display: none !important
+  
+.hide_until_reaction
   display: none
 
+.droppable
+  display: none
+  
 input[type="text"], input[type="password"], input[type="email"], select, textarea
   +light
   color: $input
@@ -97,6 +117,7 @@ p.formnote
     margin: 5px 5px 0 0
     float: left
     margin: 5px
+    margin-right: 60px
     input
       width: 160px
       background-color: $light
@@ -145,6 +166,14 @@ p.formnote
       background-position: 0 -320px
       &:hover
         background-position: 0 -352px
+    &.discussion
+      background-position: 0 -384px
+      &:hover
+        background-position: 0 -416px
+    &.help
+      background-position: 0 -448px
+      &:hover
+        background-position: 0 -480px
 
   
 #container
@@ -179,6 +208,42 @@ p.formnote
           p
             margin: 0
             margin-bottom: 0.25em
+        #admin
+          position: absolute
+          bottom: 10px
+          right: 10px
+          a
+            display: inline-block
+            margin-right: 5px
+            padding: 5px
+            +light
+            +border-radius
+            font-size: 0.85em
+            border: none
+            color: white
+            padding: 5px 8px 5px 20px
+            background:
+              position: 0 0
+              repeat: no-repeat
+            &.edit
+              background:
+                color: $blue
+                image: image-url('small_arrows.png')
+                position: 2px -180px
+              &:hover
+                background-color: lighten($blue, 10%)
+            &.delete
+              background:
+                color: $rubine
+                image: image-url('crosses.png')
+                position: 3px -85px
+              &:hover
+                background-color: $hover
+            &:active
+              background-color: darken($hover, 10%)
+            &.unavailable
+              background-color: $light
+              cursor: default
       &.image
         #body
           padding: 0
@@ -215,10 +280,12 @@ p.formnote
             left: 120px
             top: 5px
             margin: 0 0 0 20px
+            color: $mid
             h4
               margin: 0
             p
               margin-top: 0
+              margin-bottom: 0.2em
           #new_reaction
             p.slider
               clear: left
@@ -254,6 +321,12 @@ p.formnote
           
     #scraps
       margin-top: 10px
+      a.scrap_link
+        color: $dark
+        +opacity(0.9)
+        &:hover
+          color: $hover
+          +opacity(1)
       .scrap
         position: relative
         display: block
@@ -264,19 +337,10 @@ p.formnote
         height: 174px
         margin-right: 10px
         margin-bottom: 10px
-        +opacity(0.6)
-        &:hover
-          +opacity(1)
-          
+        
         p
           margin: 10px
-        a.scrap_link
-          display: block
-          position: absolute
-          top: 0
-          left: 0
-          width: 100%
-          height: 100%
+          
         &.image
           padding: 0
           p
@@ -300,6 +364,9 @@ p.formnote
       position: relative
       svg
         z-index: 1
+        circle
+          cursor: pointer
+        
       canvas
         position: absolute
         left: 0
@@ -319,7 +386,25 @@ p.formnote
       .xmax
         top: 410px
         right: 0
-      
+    #latest_posts
+      min-height: 600px
+      .post
+        h4.poster
+          +light
+          font-size: 1.8em
+          color: $mid
+          margin-bottom: 5px
+          span.post_scrap
+            margin-left: 0.5em
+            +bold
+            font-size: 0.5em
+            a
+              color: $darkmid
+              &:hover
+                color: $hover
+        .message
+          p
+            margin-top: 0
     
   #account
     width: 800px
@@ -480,6 +565,34 @@ p.formnote
           width: 100%
           height: 100%
 
+      .controls
+        position: absolute
+        display: none
+        top: 20px
+        right: 10px
+        width: 100px
+        height: 32px
+        .cancel  
+          a
+            display: block
+            height: 32px
+            line-height: 32px
+            text-indent: 34px
+            overflow: hidden
+            color: white
+            text-shadow: 1px 2px 3px #333
+            background: 
+              position: 0 0
+              repeat: no-repeat
+              image: image-url('close.png')
+            &:hover
+              color: $hover
+              background-position: 0 -32px
+            &:active
+              color: $active
+              text-shadow: none
+              background-position: 0 -64px
+
       .dropbox
         position: absolute
         overflow: hidden
@@ -494,8 +607,8 @@ p.formnote
         .progress_holder
           position: absolute
           overflow: hidden
-          top: 170px
-          left: 166px
+          top: 310px
+          left: 230px
           width: 500px
           height: 3em
           border: 1px solid $mid
@@ -520,9 +633,9 @@ p.formnote
         .waiter
           position: absolute
           overflow: hidden
-          top: 170px
-          left: 320px
-          width: 200px
+          top: 310px
+          left: 390px
+          width: 240px
           height: 32px
           line-height: 32px
           padding-left: 40px
@@ -573,6 +686,8 @@ p.formnote
                 height: 32px
                 background: transparent image-url('slider.png') no-repeat top left
                 cursor: move
+
+
 
 .pagination
   position: relative

@@ -21,6 +21,7 @@
 #= require sweet-justice
 #= require chart
 #= require forms
+#= require disqus
 
 disqus_shortname = 'scrapbok'
 disqus_category_id = 'scraps'

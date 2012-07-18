@@ -11,6 +11,8 @@ Scrapbook::Application.routes.draw do
     resources :uploads
     resources :reactions
     get :chart, :on => :member, :as => "chart"
+    get :discussion, :on => :collection, :as => "discussion"
+    get :help, :on => :collection, :as => "help"
   end
   
   resources :taggings

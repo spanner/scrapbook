@@ -1,21 +1,29 @@
+- visible = true if current_user.observer? || @reaction
+
 #scrap{:class => @scrap.type}
   #body
     - if @scrap.image?
-      = image_tag @scrap.image.url(:cropped)
+      .image
+        = image_tag @scrap.image.url(:cropped)
     
     - elsif @scrap.body?
-      - cssclass = 'sweet-justice'
-      - if @scrap.type == 'text' || @scrap.type == 'paragraph'
+      - if @scrap.wordiness == 'text' || @scrap.wordiness == 'paragraph'
         %div.text.sweet-justice{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
           = simple_format(@scrap.body)
       - else
         %div.text.sweet-hyphens{:style => "font-size: #{"%.2f" % (@scrap.text_size * 2)}em"}
           = simple_format(@scrap.body)
-    
+
+    - if current_user.can_edit?(@scrap)
+      #admin
+        = link_to "edit", edit_scrap_url(@scrap), :class => 'edit'
+        = link_to "delete", scrap_url(@scrap), :method => "delete", :class => 'delete', :confirm => t(:confirm_delete_scrap, :name => @scrap.name)
+
   #caption
     #reaction
       = render :partial => 'reactions/react', :@scrap => @scrap
-    #metadata
+
+    #metadata{:class => visible ? "" : "hide_until_reaction"}
       %h2
         = @scrap.name
       - if @scrap.description?
@@ -29,7 +37,7 @@
       = render 'tags/show'
       
       
-  - if current_user.observer? or @reaction
+  - if visible
     #discussion
       #disqus_thread
       = javascript_include_tag "http://scrapbok.disqus.com/embed.js"

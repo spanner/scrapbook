@@ -34,13 +34,13 @@ jQuery ($) ->
             sizes.push point.size
             names.push point.name
             ids.push point.id
-        xs.push 10
-        ys.push 10
+        xs.push 11
+        ys.push 11
         sizes.push 0
         names.push null
         ids.push null
-        xs.push -10
-        ys.push -10
+        xs.push -11
+        ys.push -11
         sizes.push 0
         names.push null
         ids.push null

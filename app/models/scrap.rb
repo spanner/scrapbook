@@ -9,7 +9,8 @@ class Scrap < ActiveRecord::Base
              :styles => {
                :icon => "48x48#",
                :thumb => "100x100#",
-               :list => "230x174#"
+               :list => "230x174#",
+               :precrop => "1600x1200^"
              }
 
   attr_accessor :scrap_type
@@ -72,27 +73,17 @@ class Scrap < ActiveRecord::Base
     end
   end
 
-  def as_json(options={})
-    count = reactions.count
-    json = {
-      :size => count,
-      :name => name,
-      :id => id
-    }
-    scores.each do |score|
-      unless json[score.scale.name]
-        json[score.scale.name] = score.value/count
-      else
-        json[score.scale.name] += score.value/count
-      end
+  # This will get more complicated
+  def type
+    if new_record? || image?
+      'image'
+    else
+      'text'
     end
-    json
   end
   
-  def type
-    if image?
-      'image'
-    elsif body.length < 48
+  def wordiness
+    if body.length < 48
       'word'
     elsif body.length < 320
       'phrase'
@@ -111,6 +102,25 @@ class Scrap < ActiveRecord::Base
     end
   end
   
+  def as_json(options={})
+    count = reactions.count
+    json = {
+      :id => id,
+      :name => name,
+      :size => count,
+      :type => type,
+      :wordiness => wordiness,
+      :text => body,
+      :thumb => image.url(:thumb),
+      :image => image.url(:cropped),
+      :user => user.as_json(options)
+    }
+    scores.compact.each do |score|
+      json[score.scale.name] ||= 0
+      json[score.scale.name] += score.value/count if score.value
+    end
+    json
+  end
 
 protected
 
