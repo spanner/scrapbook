@@ -47,6 +47,8 @@
           = f.label :user_id
           %br
           = f.select :user_id, User.for_selection
+    #tags
+      = render 'tags/edit'
       
     .controls
       %p

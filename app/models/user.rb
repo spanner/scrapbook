@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :scores, :through => :reactions
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :forename, :surname, :observer
   
   after_create :send_invitation
   
@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
 
   def self.for_selection
     self.all.map{|u| [u.name, u.id] }
+  end
+  
+  def invite
+    send_invitation
   end
 
 protected

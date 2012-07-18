@@ -404,3 +404,5 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider()
   $('#new_reaction').reactor()
+  $('ul.tagger').tagger()
+  $('a.detag').detagger()

@@ -51,12 +51,14 @@ jQuery ($) ->
           #   angle = 180 + Math.atan(tanA)/Math.PI*180
           # else
           #   angle = Math.atan(tanA)/Math.PI*180
+          
           if this.x > width/2
             angle = 180
           else
             angle = 0
-          this.marker = this.marker || canvas.tag(this.x, this.y, @data('caption'), angle, this.r + 2).insertBefore(this)
-          this.marker.show()
+          unless this.data('id') == null
+            this.marker = this.marker || canvas.tag(this.x, this.y, @data('caption'), angle, this.r + 2).insertBefore(this)
+            this.marker.show()
         ,() ->
           this.marker && this.marker.hide()
 

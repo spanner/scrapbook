@@ -25,7 +25,10 @@
         %p.note
           = t :uploaded_by
           = @scrap.user.forename
-
+    #tags
+      = render 'tags/show'
+      
+      
   - if current_user.observer? or @reaction
     #discussion
       #disqus_thread

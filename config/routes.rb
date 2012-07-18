@@ -13,9 +13,12 @@ Scrapbook::Application.routes.draw do
     get :chart, :on => :member, :as => "chart"
   end
   
+  resources :taggings
   resources :reactions
   root :to => 'scraps#index'
   
+  match '/suggestions', :to => 'suggestions#index'
+  match '/suggestions/:type', :to => 'suggestions#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
