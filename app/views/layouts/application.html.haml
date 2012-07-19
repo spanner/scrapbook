@@ -24,6 +24,7 @@
           %p
             = link_to t(:latest), '/', :class => 'grid'
             = link_to t(:discussion), discussion_scraps_url, :class => 'discussion'
+            = link_to t(:tags), tags_url, :class => 'tags'
             = link_to t(:overview), reactions_url, :class => 'chart'
             = link_to t(:add_scrap), new_scrap_url, :class => 'add' unless current_user.passive_observer?
     

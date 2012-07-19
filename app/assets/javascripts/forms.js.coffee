@@ -404,7 +404,7 @@ jQuery ($) ->
       form = new Searchform @, options
       $(@).find('input[type="search"]').keyup (e) ->
         k = e.which
-        form.submit()  if (k >= 49 and k <= 122)
+        form.submit() if (k is 8) or (k is 46) or (48 < k < 123)
     @
 
   $.fn.replace_with_remote_content = () ->
