@@ -20,8 +20,8 @@
         = link_to t(:scrapbook), "/"
       - if user_signed_in?
         #nav.navigation
-          = render 'layouts/search_form'
           %p
+            = link_to t(:latest), scraps_url, :class => 'latest'
             = link_to t(:discussion), discussion_scraps_url, :class => 'discussion'
             = link_to t(:tags), tags_url, :class => 'tags'
             = link_to t(:overview), reactions_url, :class => 'chart'
@@ -38,6 +38,7 @@
           = link_to t(:invite), new_user_url, :class => 'invite'
           = link_to t(:preferences), edit_user_url(current_user), :class => 'preferences'
           = link_to t(:log_out), destroy_user_session_path, :class => 'logout', :method => :delete
+        = render 'layouts/search_form'
 
     #colophon
       = t(:footer_info).html_safe
