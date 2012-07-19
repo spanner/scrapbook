@@ -1,1 +1,7 @@
+- if @tags.any?
+  .facets
+    = t :scraps_tagged_with
+    - @tags.each do |tag|
+      = link_to tag.name, scraps_path, :class => 'detag'
+
 = render :partial => "scraps/scrap_list"

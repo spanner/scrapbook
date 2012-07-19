@@ -448,6 +448,5 @@ $ ->
   $('#searchform.fast form').searchform()
   $("input.slider").slider() unless Modernizr.touch
   $('#new_reaction').reactor()
-  $('a.detag').detagger()
   $('ul.tagger').tagger()
   $('a.add_tagger').replace_with_remote_content()

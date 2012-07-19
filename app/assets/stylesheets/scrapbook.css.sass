@@ -198,6 +198,10 @@ p.formnote
       background-position: 0 -448px
       &:hover
         background-position: 0 -480px
+    &.tags
+      background-position: 0 -512px
+      &:hover
+        background-position: 0 -544px
 
   
 #container
@@ -220,6 +224,9 @@ p.formnote
       float: right
             
   #content
+    .facets
+      margin: 20px 0
+      +bold
     #scrap
       #body
         position: relative
@@ -848,3 +855,16 @@ ul.suggestions
       scroll: scroll
       image: image-url('pale_spinner.gif')
        
+
+div.cloud
+  margin-top: 30px
+  overflow: hidden
+  line-height: 1.1
+  a, a:visited
+    +light
+    margin-right: 0.4em
+    display: inline
+    color: $mid
+    letter-spacing: -0.02em
+    &:hover, &.hover
+      color: $link

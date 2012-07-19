@@ -42,6 +42,7 @@ en:
   scrapbook: "Scrapbook"
   scrap_destroyed: "The scrap '%{name}' has been removed along with all its reactions."
   scrap_help: "Help"
+  scraps_tagged_with: "Showing scraps tagged with"
   send_invitation: "Send invitation"
   send_reset_instructions: "Send reset instructions"
   set_password: "Set password"
