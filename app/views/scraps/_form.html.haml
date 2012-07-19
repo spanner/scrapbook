@@ -31,16 +31,26 @@
     
     .panel.text
       = f.text_area :body, :rel => Scrap.human_attribute_name("body"), :class => 'labelled body'
+
     .panel.video
+      .youtube_picker
+        %p
+          = f.label :youtube_id
+          %br
+          = f.text_field :youtube_id
+          %br
+          %span.note
+            = t :youtube_id_note
+        
     .panel.audio
     .panel.document
   #caption
     .tabs
-      = link_to t(:document), '#document', :class => 'unavailable', :'data-reveal' => '.document'
-      = link_to t(:audio), '#audio', :class => 'unavailable', :'data-reveal' => '.audio'
-      = link_to t(:video), '#video', :class => 'unavailable', :'data-reveal' => '.video'
-      = link_to t(:text), '#text', :class => 'tab', :'data-reveal' => '.text'
-      = link_to t(:image), '#image', :class => 'tab here', :'data-reveal' => '.image'
+      = link_to t(:document), '#document', :class => 'unavailable', :'data-reveal' => 'div.document'
+      = link_to t(:audio), '#audio', :class => 'unavailable', :'data-reveal' => 'div.audio'
+      = link_to t(:video), '#video', :class => 'tab', :'data-reveal' => 'div.video'
+      = link_to t(:text), '#text', :class => 'tab', :'data-reveal' => 'div.text'
+      = link_to t(:image), '#image', :class => 'tab here', :'data-reveal' => 'div.image'
       = f.hidden_field :scrap_type, :class => 'tabbed', :value => @scrap.type
   
     #metadata

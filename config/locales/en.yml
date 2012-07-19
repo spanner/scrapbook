@@ -10,6 +10,7 @@ en:
         description: "Description (optional)"
         body: "Enter your text here"
         user_id: "Assign to user"
+        youtube_id: "Youtube video id"
       user:
         observer: "Invite as observer"
   add_scrap: "Add scrap"
@@ -56,4 +57,4 @@ en:
   text: "Text"
   image: "Image"
   show_reactions: "Show reactions"
-  
+  youtube_id_note: "When I get time, a proper youtube search-and-pick interface will appear here."

@@ -255,6 +255,9 @@ jQuery ($) ->
       @element = $(element)
       @name = @element.attr('href').replace('#', '')
       @selector = @element.attr('data-reveal')
+      
+      console.log "tag", @, 'has selector', @selector, 'which gives', $(@selector)
+      
       @showing = @element.hasClass('here')
       @element.click @show
       tabs[@name] = @
@@ -263,6 +266,7 @@ jQuery ($) ->
         @show() 
 
     show: (e) =>
+      console.log "show", @, $(@selector)
       e.preventDefault() if e
       Tab.hide()
       $(@selector).fadeIn()
@@ -270,6 +274,7 @@ jQuery ($) ->
       $('input.tabbed').val(@name)
       
     hide: (e) =>
+      console.log "hide", @, $(@selector)
       e.preventDefault() if e
       $(@selector).hide()
       @element.removeClass('here')

@@ -14,7 +14,7 @@ class Scrap < ActiveRecord::Base
              }
 
   attr_accessor :scrap_type
-  attr_accessible :user_id, :name, :body, :image, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type, :taggings_attributes, :tags_attributes
+  attr_accessible :user_id, :name, :body, :image, :youtube_id, :image_offset_left, :image_offset_top, :image_upload_id, :image_scale_width, :image_scale_height, :description, :scrap_type, :taggings_attributes, :tags_attributes
   accepts_nested_attributes_for :tags, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :taggings, :allow_destroy => true, :reject_if => :all_blank
   
@@ -81,6 +81,8 @@ class Scrap < ActiveRecord::Base
   def type
     if new_record? || image?
       'image'
+    elsif video?
+      'video'
     else
       'text'
     end
