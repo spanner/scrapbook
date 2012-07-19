@@ -1,6 +1,9 @@
 %a{:href => scrap_url(scrap), :class => "scrap_link", :id => "scrap_#{scrap.id}"}
   .scrap{:class => scrap.wordiness}
-    - if scrap.image?
+    - if scrap.video?
+      .thumbnail{:style => "background-image: url('http://img.youtube.com/vi/#{scrap.youtube_id}/default.jpg')"}
+        .playable
+    - elsif scrap.image?
       = image_tag(scrap.image.url(:list))
     - else
       - if scrap.wordiness == 'text' || scrap.wordiness == 'paragraph'

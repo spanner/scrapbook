@@ -10,13 +10,14 @@ Scrapbook::Application.routes.draw do
   resources :scraps do
     resources :uploads
     resources :reactions
-    resources :taggings
+    resources :taggings, :only => :new
     get :chart, :on => :member, :as => "chart"
     get :discussion, :on => :collection, :as => "discussion"
     get :help, :on => :collection, :as => "help"
   end
   
-  resources :taggings
+  resources :tags, :only => :index
+  resources :taggings, :only => :new
   resources :reactions
   root :to => 'scraps#index'
   

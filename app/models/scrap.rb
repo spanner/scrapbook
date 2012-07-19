@@ -49,6 +49,10 @@ class Scrap < ActiveRecord::Base
     tag_count = tags.size
     select("scraps.*").joins("INNER JOIN taggings as tt on tt.scrap_id = scraps.id").where(["tt.tag_id in(#{placeholders})"] + tags.map(&:id)).group("scraps.id").having("count(tt.id) = #{tag_count}")
   }
+  
+  def video?
+    youtube_id?
+  end
 
   def average_score_for(scale)
     scale = Scale.find_by_name(scale) unless scale.is_a? Scale

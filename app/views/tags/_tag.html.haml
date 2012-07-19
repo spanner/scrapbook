@@ -1,4 +1,0 @@
-#list
-  .cloud
-    - cloud(@tags) do |tag|
-      = link_to tag.name, scraps_path(:tag => tag), :style => "font-size: #{tag.cloud_size}em;", :id => "tag_#{tag.id}", :rel => merge_tag_path(tag)

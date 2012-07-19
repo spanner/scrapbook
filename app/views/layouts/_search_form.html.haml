@@ -1,4 +1,4 @@
 #searchform.fast
   %form{:action => scraps_url, :id => 'scrap_search', :"data-remote" => true}
     = form_tag do
-      = text_field_tag(:tag, params[:tag], :placeholder => "search", :tag => 'tag', :class => 'search', :type => 'search')
+      = text_field_tag(:q, params[:q], :placeholder => "search", :class => 'search', :type => 'search')

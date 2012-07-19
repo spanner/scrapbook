@@ -227,6 +227,8 @@ p.formnote
         min-height: $content-height
         background-color: $verypale
         margin: 0
+        iframe
+          margin: 0
         div.text
           margin: 40px 80px 50px 50px
           p
@@ -379,7 +381,30 @@ p.formnote
         height: 174px
         margin-right: 10px
         margin-bottom: 10px
-        
+        .thumbnail
+          position: absolute
+          top: 0
+          left: 0
+          width: 230px
+          height: 174px
+          background:
+            color: black
+            position: center center
+            size: cover
+            repeat: no-repeat
+          .playable
+            position: absolute
+            left: 0
+            top: 0
+            width: 230px
+            height: 174px
+            +opacity(0.75)
+            background:
+              position: center center
+              repeat: no-repeat
+              image: image-url('playable.png')
+            &:hover
+              +opacity(1)
         p
           margin: 10px
           

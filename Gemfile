@@ -17,7 +17,7 @@ gem "paperclip", "~> 3.0"
 gem "cropped_paperclip", :git => "git://github.com/spanner/cropper.git"
 
 # youtube_it will add some API integration to make adding a video more pleasant.
-#gem "youtube_it"
+# gem "youtube_it"
 
 # Kaminari for minimal pagination
 gem 'kaminari', '~> 0.13'

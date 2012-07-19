@@ -68,11 +68,11 @@ protected
     @order = params[:order] || sorts[@by.to_sym] || 'ASC'
     
     @scraps = Scrap.order("scraps.#{@by} #{@order}")
-    @tags = [params[:tag]].flatten.map{|t| Tag.find_by_id(t) }.compact
+    @tags = [params[:tag]].flatten.map{|t| Tag.find_by_name(t) }.compact
     @fragments = []
     
-    unless params[:tag].blank?
-      [params[:tag]].flatten.reject(&:blank?).each do |fragment|
+    unless params[:q].blank?
+      [params[:q]].flatten.reject(&:blank?).each do |fragment|
         if scrap = Scrap.find_by_name(fragment)
           @scraps.push(scrap)
         elsif tag = Tag.find_by_name(fragment)
